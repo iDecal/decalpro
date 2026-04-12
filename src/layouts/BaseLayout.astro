@@ -1,14 +1,26 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
+import Header from "@/components/global/Header.astro";
 import Footer from "@/components/global/Footer.astro";
 ---
 
-<html lang="en">
+<html lang="vi">
   <head>
     <BaseHead />
   </head>
-  <body class="bg-white max-w-6xl mx-auto px-8 lg:px-12 flex flex-col">
-    <main class="grow"><slot /></main>
+
+  <body class="bg-white max-w-6xl mx-auto px-8 lg:px-12 flex flex-col min-h-screen">
+
+    <!-- HEADER -->
+    <Header />
+
+    <!-- MAIN CONTENT -->
+    <main class="grow">
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
     <Footer />
+
   </body>
 </html>
