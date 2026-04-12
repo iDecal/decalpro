@@ -1,69 +1,36 @@
+// =========================
+// FILE: src/components/Header.astro
+// =========================
 ---
-              <a class="p-3 hover:bg-gray-50 rounded-xl" href="/dich-vu/decal-logo">Decal logo</a>
-              <a class="p-3 hover:bg-gray-50 rounded-xl" href="/dich-vu/decal-trang-tri">Trang trí</a>
-              <a class="p-3 hover:bg-gray-50 rounded-xl" href="/dich-vu/decal-chong-nang">Chống nắng</a>
-            </div>
-          </div>
-        </div>
+---
 
-        <!-- LOCATION MEGA -->
-        <div class="relative group">
-          <button class="hover:text-green-600">Khu vực ▾</button>
-          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[760px] bg-white border shadow-xl rounded-2xl p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
-            <div class="grid grid-cols-4 gap-3 text-sm">
-              <a href="/decal-quan-1" class="hover:text-green-600">Q.1</a>
-              <a href="/decal-quan-3" class="hover:text-green-600">Q.3</a>
-              <a href="/decal-quan-7" class="hover:text-green-600">Q.7</a>
-              <a href="/decal-binh-thanh" class="hover:text-green-600">Bình Thạnh</a>
-              <a href="/decal-thu-duc" class="hover:text-green-600">Thủ Đức</a>
-              <a href="/decal-tan-binh" class="hover:text-green-600">Tân Bình</a>
-              <a href="/decal-go-vap" class="hover:text-green-600">Gò Vấp</a>
-              <a href="/decal-phu-nhuan" class="hover:text-green-600">Phú Nhuận</a>
-            </div>
-          </div>
-        </div>
+<header class="w-full border-b bg-white">
+  <div class="w-full px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-4">
 
-        <a href="/du-an" class="hover:text-green-600">Dự án</a>
-        <a href="/blog" class="hover:text-green-600">Blog</a>
+      <!-- LOGO -->
+      <a href="/" class="text-xl font-bold text-green-600">
+        iDecal
+      </a>
+
+      <!-- MENU -->
+      <nav class="flex flex-col md:flex-row md:items-center gap-3 md:gap-6 text-sm">
+
+        <a href="/" class="text-gray-700">Trang chủ</a>
+        <a href="/dich-vu" class="text-gray-700">Dịch vụ</a>
+        <a href="/du-an" class="text-gray-700">Dự án</a>
+        <a href="/blog" class="text-gray-700">Blog</a>
         <a href="/lien-he" class="text-green-600 font-semibold">Liên hệ</a>
 
       </nav>
 
-      <!-- CTA -->
-      <div class="flex items-center gap-3">
-        <a href="tel:0862208108" class="hidden md:inline bg-green-600 text-white px-4 py-2 rounded-xl text-sm">
-          Gọi ngay
+      <!-- CONTACT -->
+      <div class="text-sm text-gray-700">
+        <a href="tel:0862208108" class="font-semibold text-green-600">
+          0862-208-108
         </a>
-
-        <!-- MOBILE BUTTON -->
-        <button id="menuBtn" class="lg:hidden text-2xl">☰</button>
       </div>
 
     </div>
   </div>
-
-  <!-- MOBILE MENU OVERLAY -->
-  <div id="mobileMenu" class="fixed inset-0 bg-black/50 hidden">
-    <div class="absolute right-0 top-0 w-72 h-full bg-white p-6">
-      <button id="closeBtn" class="text-xl mb-6">✕</button>
-      <nav class="flex flex-col gap-4">
-        <a href="/">Trang chủ</a>
-        <a href="/dich-vu">Dịch vụ</a>
-        <a href="/decal-quan-7">Khu vực</a>
-        <a href="/du-an">Dự án</a>
-        <a href="/blog">Blog</a>
-        <a href="/lien-he" class="text-green-600 font-semibold">Liên hệ</a>
-      </nav>
-    </div>
-  </div>
-
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    menuBtn?.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-    closeBtn?.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-  </script>
-
 </header>
