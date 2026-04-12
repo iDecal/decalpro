@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const { slug } = Astro.params;
+
+const post = {
+  title: "Thi công decal quận 7",
+  content: "Nội dung bài viết ở đây...",
+};
+---
+
+<BaseLayout title={post.title}>
+  <!-- HERO -->
+  <section class="w-full py-20 bg-white">
+    <div class="w-full max-w-3xl mx-auto px-6">
+
+      <!-- BREADCRUMB -->
+      <div class="text-sm text-gray-400 mb-6">
+        Blog / Thi công / {post.title}
+      </div>
+
+      <h1 class="text-4xl font-semibold leading-tight">
+        {post.title}
+      </h1>
+
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="w-full pb-20">
+    <div class="w-full max-w-3xl mx-auto px-6 prose prose-lg">
+
+      <p>{post.content}</p>
+
+      <!-- CTA -->
+      <div class="mt-10 p-6 border rounded-lg bg-gray-50">
+        <h3 class="text-xl font-semibold">Cần báo giá thi công?</h3>
+        <a href="/lien-he" class="text-blue-600 mt-2 inline-block">
+          Liên hệ Decal Pro →
+        </a>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
