@@ -7,6 +7,18 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   // Add your domain here
-   site: 'https://lexingtonthemes.com',
+   site: 'https://thicongdecal.pro',
   integrations: [ sitemap()]
+});
+import { defineConfig } from 'astro/config';
+import path from 'path';
+
+export default defineConfig({
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve('./src'),
+      },
+    },
+  },
 });
