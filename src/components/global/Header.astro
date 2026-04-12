@@ -1,14 +1,19 @@
+// =========================
+// FILE: src/components/global/Header.astro (CLEAN FIXED VERSION)
+// =========================
 ---
+---
+
 <header class="w-full border-b bg-white">
   <div class="w-full px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6 py-4">
 
       <!-- LOGO -->
       <a href="/" class="text-xl font-bold text-green-600">
         iDecal
       </a>
 
-      <!-- MENU -->
+      <!-- NAVIGATION -->
       <nav class="flex flex-col md:flex-row md:items-center gap-3 md:gap-6 text-sm">
         <a href="/" class="text-gray-700">Trang chủ</a>
         <a href="/dich-vu" class="text-gray-700">Dịch vụ</a>
@@ -18,31 +23,12 @@
       </nav>
 
       <!-- CONTACT -->
-      <div class="text-sm text-gray-700">
+      <div class="text-sm">
         <a href="tel:0862208108" class="font-semibold text-green-600">
           0862-208-108
         </a>
       </div>
-    </div>
 
-    <!-- SEO LOCAL AREA -->
-    <div class="border-t mt-3 pt-3">
-      <div class="max-w-7xl mx-auto flex flex-wrap gap-2 text-xs text-gray-500">
-        <span class="font-semibold text-gray-700">Khu vực:</span>
-        <a href="/decal-quan-1" class="hover:text-green-600">Q1</a>
-        <a href="/decal-quan-3" class="hover:text-green-600">Q3</a>
-        <a href="/decal-quan-4" class="hover:text-green-600">Q4</a>
-        <a href="/decal-quan-5" class="hover:text-green-600">Q5</a>
-        <a href="/decal-quan-7" class="hover:text-green-600">Q7</a>
-        <a href="/decal-quan-10" class="hover:text-green-600">Q10</a>
-        <a href="/decal-binh-thanh" class="hover:text-green-600">Bình Thạnh</a>
-        <a href="/decal-tan-binh" class="hover:text-green-600">Tân Bình</a>
-        <a href="/decal-go-vap" class="hover:text-green-600">Gò Vấp</a>
-        <a href="/decal-thu-duc" class="hover:text-green-600">Thủ Đức</a>
-        <a href="/decal-phu-nhuan" class="hover:text-green-600">Phú Nhuận</a>
-        <a href="/decal-tan-phu" class="hover:text-green-600">Tân Phú</a>
-      </div>
     </div>
-
   </div>
 </header>
