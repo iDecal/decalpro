@@ -1,1 +1,40 @@
-Chưa blog
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogCard from "@/components/blog/BlogCard.astro";
+
+const posts = [
+  {
+    title: "Decal dán kính văn phòng là gì?",
+    slug: "decal-dan-kinh-van-phong",
+    desc: "Giải pháp tăng riêng tư và thẩm mỹ cho văn phòng hiện đại",
+  },
+  {
+    title: "Thi công decal quận 7",
+    slug: "thi-cong-decal-quan-7",
+    desc: "Dịch vụ thi công nhanh trong ngày tại quận 7",
+  }
+];
+---
+
+<BaseLayout title="Blog Decal Pro">
+  <!-- HERO -->
+  <section class="w-full py-20 bg-gradient-to-b from-white to-gray-50">
+    <div class="w-full max-w-6xl mx-auto px-6 lg:px-8">
+      <h1 class="text-4xl font-semibold">Blog Decal Pro</h1>
+      <p class="text-gray-600 mt-4">
+        Kiến thức thi công decal & giải pháp không gian
+      </p>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="w-full py-16">
+    <div class="w-full max-w-6xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-6">
+
+      {posts.map((post) => (
+        <BlogCard post={post} />
+      ))}
+
+    </div>
+  </section>
+</BaseLayout>
