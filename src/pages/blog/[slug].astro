@@ -5,28 +5,18 @@ export const prerender = true;
 
 export async function getStaticPaths() {
   return [
-    { params: { category: "decal-van-phong" } },
-    { params: { category: "thi-cong-decal" } },
-    { params: { category: "decal-dan-kinh" } },
-    { params: { category: "decal-quan" } }
+    { params: { slug: "decal-dan-kinh-van-phong" } },
+    { params: { slug: "thi-cong-decal-quan-7" } },
   ];
 }
 
-const { category } = Astro.params;
+const { slug } = Astro.params;
+
+const post = {
+  title: slug.replaceAll("-", " "),
+};
 ---
 
-<BaseLayout title={category}>
-  <section class="w-full py-20">
-    <div class="w-full max-w-6xl mx-auto px-6">
-
-      <h1 class="text-4xl font-semibold">
-        {category}
-      </h1>
-
-      <p class="mt-4 text-gray-600">
-        Danh mục bài viết liên quan
-      </p>
-
-    </div>
-  </section>
+<BaseLayout title={post.title}>
+  <h1>{post.title}</h1>
 </BaseLayout>
