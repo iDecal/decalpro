@@ -1,20 +1,17 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-
 import sitemap from "@astrojs/sitemap";
-export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  // Add your domain here
-   site: 'https://thicongdecal.pro',
-  integrations: [ sitemap()]
-});
-import { defineConfig } from 'astro/config';
 import path from 'path';
 
 export default defineConfig({
+  site: 'https://thicongdecal.pro',
+
+  integrations: [
+    sitemap()
+  ],
+
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve('./src'),
