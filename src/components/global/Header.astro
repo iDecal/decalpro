@@ -1,0 +1,65 @@
+<header class="w-full border-b bg-white sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- 🌿 Logo -->
+    <a href="/" class="flex items-center gap-2">
+      <img src="/assets/images/logo.png" alt="iDecal" width="140" />
+    </a>
+
+    <!-- 🌿 Menu -->
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+      <a href="/" class="hover:text-blue-600">Home</a>
+      <a href="/gioi-thieu" class="hover:text-blue-600">Giới thiệu</a>
+      <a href="/dich-vu" class="hover:text-blue-600">Dịch vụ</a>
+      <a href="/thi-cong" class="hover:text-blue-600">Hình ảnh thi công</a>
+      <a href="/blog" class="hover:text-blue-600">Blog</a>
+      <a href="/lien-he" class="hover:text-blue-600">Liên hệ</a>
+    </nav>
+
+    <!-- 🌿 CTA -->
+    <div class="hidden lg:block">
+      <a 
+        href="/lien-he" 
+        class="bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition"
+      >
+        Báo giá miễn phí
+      </a>
+    </div>
+
+    <!-- 🌿 Mobile menu button -->
+    <button id="menu-btn" class="lg:hidden text-2xl">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- 🌿 Mobile menu -->
+  <div id="mobile-menu" class="hidden border-t bg-white">
+    <div class="flex flex-col p-4 gap-4 text-sm">
+      <a href="/">Home</a>
+      <a href="/gioi-thieu">Giới thiệu</a>
+      <a href="/dich-vu">Dịch vụ</a>
+      <a href="/thi-cong">Hình ảnh thi công</a>
+      <a href="/blog">Blog</a>
+      <a href="/lien-he">Liên hệ</a>
+
+      <a 
+        href="/lien-he" 
+        class="bg-blue-600 text-white text-center py-2 rounded-lg"
+      >
+        Báo giá miễn phí
+      </a>
+    </div>
+  </div>
+
+  <!-- 🌿 Script mobile -->
+  <script is:inline>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn?.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+
+</header>
