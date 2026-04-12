@@ -1,62 +1,14 @@
 ---
-const {
-  title = "Decal Pro - Thi công decal chuyên nghiệp tại TPHCM",
-  description = "Decal Pro chuyên thi công decal dán kính, decal văn phòng, decal trang trí, decal quảng cáo tại TPHCM. Thi công nhanh, thẩm mỹ cao, uy tín.",
-  image = "/og-image.jpg",
-  canonical = "https://thicongdecal.pro"
-} = Astro.props;
+import BaseHead from "@/components/BaseHead.astro";
+import Footer from "@/components/global/Footer.astro";
 ---
 
-<!doctype html>
-<html lang="vi">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO BASIC -->
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-
-    <!-- INDEX CONTROL -->
-    <meta name="robots" content="index, follow" />
-
-    <!-- OPEN GRAPH -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content="Decal Pro" />
-
-    <!-- TWITTER -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
-
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
-
-    <!-- LOCAL BUSINESS SCHEMA -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        name: "Decal Pro",
-        url: canonical,
-        telephone: "0862208108",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "606/20 Quốc lộ 13, P. Hiệp Bình",
-          addressLocality: "TPHCM",
-          addressCountry: "VN"
-        }
-      })}
-    </script>
+    <BaseHead />
   </head>
-
-  <body class="font-sans text-gray-800 bg-white">
-    <slot />
+  <body class="bg-white max-w-6xl mx-auto px-8 lg:px-12 flex flex-col">
+    <main class="grow"><slot /></main>
+    <Footer />
   </body>
 </html>
