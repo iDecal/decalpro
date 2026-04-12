@@ -1,68 +1,69 @@
-<header class="w-full border-b bg-white sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+---
+              <a class="p-3 hover:bg-gray-50 rounded-xl" href="/dich-vu/decal-logo">Decal logo</a>
+              <a class="p-3 hover:bg-gray-50 rounded-xl" href="/dich-vu/decal-trang-tri">Trang trí</a>
+              <a class="p-3 hover:bg-gray-50 rounded-xl" href="/dich-vu/decal-chong-nang">Chống nắng</a>
+            </div>
+          </div>
+        </div>
 
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2">
-      <img src="/images/DecalPro.png" alt="DecalPro" width="50" />
-    </a>
+        <!-- LOCATION MEGA -->
+        <div class="relative group">
+          <button class="hover:text-green-600">Khu vực ▾</button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[760px] bg-white border shadow-xl rounded-2xl p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
+            <div class="grid grid-cols-4 gap-3 text-sm">
+              <a href="/decal-quan-1" class="hover:text-green-600">Q.1</a>
+              <a href="/decal-quan-3" class="hover:text-green-600">Q.3</a>
+              <a href="/decal-quan-7" class="hover:text-green-600">Q.7</a>
+              <a href="/decal-binh-thanh" class="hover:text-green-600">Bình Thạnh</a>
+              <a href="/decal-thu-duc" class="hover:text-green-600">Thủ Đức</a>
+              <a href="/decal-tan-binh" class="hover:text-green-600">Tân Bình</a>
+              <a href="/decal-go-vap" class="hover:text-green-600">Gò Vấp</a>
+              <a href="/decal-phu-nhuan" class="hover:text-green-600">Phú Nhuận</a>
+            </div>
+          </div>
+        </div>
 
-    <!-- Menu -->
-    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
-      <a href="/" class="hover:text-blue-600">Home</a>
-      <a href="/gioi-thieu" class="hover:text-blue-600">Giới thiệu</a>
-      <a href="/dich-vu" class="hover:text-blue-600">Dịch vụ</a>
-      <a href="/thi-cong" class="hover:text-blue-600">Hình ảnh thi công</a>
-      <a href="/blog" class="hover:text-blue-600">Blog</a>
-      <a href="/lien-he" class="hover:text-blue-600">Liên hệ</a>
-    </nav>
+        <a href="/du-an" class="hover:text-green-600">Dự án</a>
+        <a href="/blog" class="hover:text-green-600">Blog</a>
+        <a href="/lien-he" class="text-green-600 font-semibold">Liên hệ</a>
 
-    <!-- CTA -->
-    <div class="hidden lg:block">
-      <a 
-        href="/lien-he" 
-        class="px-5 py-2 transition"
-        style="background:#ffdf3c; color:#000000;"
-      >
-        Báo giá miễn phí
-      </a>
-    </div>
+      </nav>
 
-    <!-- Mobile menu button -->
-    <button id="menu-btn" class="lg:hidden text-2xl">
-      ☰
-    </button>
+      <!-- CTA -->
+      <div class="flex items-center gap-3">
+        <a href="tel:0862208108" class="hidden md:inline bg-green-600 text-white px-4 py-2 rounded-xl text-sm">
+          Gọi ngay
+        </a>
 
-  </div>
+        <!-- MOBILE BUTTON -->
+        <button id="menuBtn" class="lg:hidden text-2xl">☰</button>
+      </div>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden border-t bg-white">
-    <div class="flex flex-col p-4 gap-4 text-sm">
-      <a href="/">Home</a>
-      <a href="/gioi-thieu">Giới thiệu</a>
-      <a href="/dich-vu">Dịch vụ</a>
-      <a href="/khu-vuc">Khu vực</a>
-      <a href="/hinh-anh-thi-cong">Hình ảnh thi công</a>
-      <a href="/blog">Blog</a>
-      <a href="/lien-he">Liên hệ</a>
-
-      <a 
-        href="/lien-he" 
-        class="text-center py-2"
-        style="background:#ffdf3c; color:#103ebc;"
-      >
-        Báo giá miễn phí
-      </a>
     </div>
   </div>
 
-  <!-- Script mobile -->
-  <script is:inline>
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
+  <!-- MOBILE MENU OVERLAY -->
+  <div id="mobileMenu" class="fixed inset-0 bg-black/50 hidden">
+    <div class="absolute right-0 top-0 w-72 h-full bg-white p-6">
+      <button id="closeBtn" class="text-xl mb-6">✕</button>
+      <nav class="flex flex-col gap-4">
+        <a href="/">Trang chủ</a>
+        <a href="/dich-vu">Dịch vụ</a>
+        <a href="/decal-quan-7">Khu vực</a>
+        <a href="/du-an">Dự án</a>
+        <a href="/blog">Blog</a>
+        <a href="/lien-he" class="text-green-600 font-semibold">Liên hệ</a>
+      </nav>
+    </div>
+  </div>
 
-    btn?.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+    closeBtn?.addEventListener('click', () => mobileMenu.classList.add('hidden'));
   </script>
 
 </header>
