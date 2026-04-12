@@ -1,29 +1,30 @@
 ---
-import BaseHead from "@/components/BaseHead.astro";
-import Header from "@/components/global/Header.astro";
-import Footer from "@/components/global/Footer.astro";
+import Header from "../components/Header.astro";
+const { title = "Decal", description = "Thi công decal" } = Astro.props;
 ---
-
-<!DOCTYPE html>
 <html lang="vi">
   <head>
-    <BaseHead />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "iDecal",
+        telephone: "0862208108",
+      })}
+    </script>
   </head>
 
-  <body class="bg-white text-gray-800 min-h-screen flex flex-col">
-
-    <!-- Header -->
+  <body class="font-sans text-gray-800 bg-white">
     <Header />
-
-    <!-- Main Content -->
-    <main class="flex-1 w-full">
-      <div class="max-w-6xl mx-auto px-6 lg:px-12">
+    <main class="w-full px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32">
+      <div class="max-w-7xl mx-auto">
         <slot />
       </div>
     </main>
-
-    <!-- Footer -->
-    <Footer />
-
   </body>
 </html>
