@@ -16,9 +16,18 @@ const { items = [] } = Astro.props as { items: FAQItem[] };
     {items.map((item) => (
       <details class="group border rounded-xl p-5 cursor-pointer">
         <summary class="flex justify-between items-center font-semibold text-lg">
-          {item.question}
-          <span class="group-open:rotate-180 transition">⌄</span>
-        </summary>
+  {item.question}
+
+  <span class="group-open:rotate-180 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         class="w-5 h-5" 
+         fill="none" 
+         viewBox="0 0 24 24" 
+         stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </span>
+</summary>
         <p class="mt-3 text-gray-600">
           {item.answer}
         </p>
