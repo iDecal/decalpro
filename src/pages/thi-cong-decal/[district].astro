@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Footer from "../../components/global/Footer.astro";
 
 export function getStaticPaths() {
   const districts = [
@@ -17,11 +18,35 @@ export function getStaticPaths() {
 
 const { slug } = Astro.props;
 
+// ✅ map chuẩn SEO tiếng Việt
+const nameMap = {
+  "binh-thanh": "Bình Thạnh",
+  "phu-nhuan": "Phú Nhuận",
+  "tan-binh": "Tân Bình",
+  "tan-phu": "Tân Phú",
+  "binh-tan": "Bình Tân",
+  "thu-duc": "TP Thủ Đức",
+  "hoc-mon": "Hóc Môn",
+  "cu-chi": "Củ Chi",
+  "binh-chanh": "Bình Chánh",
+  "nha-be": "Nhà Bè",
+  "can-gio": "Cần Giờ"
+};
+
 const districtName = slug.startsWith("quan-")
   ? "Quận " + slug.replace("quan-", "")
-  : slug;
+  : nameMap[slug] || slug;
 ---
 
 <BaseLayout title={`Thi công decal dán kính ${districtName}`}>
-  <h1>{districtName}</h1>
+
+  <section class="py-20 text-center">
+    <h1 class="text-4xl font-bold">
+      Thi công decal dán kính {districtName}
+    </h1>
+  </section>
+
+  <!-- 🌿 Footer dynamic SEO -->
+  <Footer districtName={districtName} slug={slug} />
+
 </BaseLayout>
