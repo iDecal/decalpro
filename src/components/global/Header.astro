@@ -60,39 +60,40 @@ const districtMega = [
       Decal Pro
     </a>
 
-    <!-- DESKTOP -->
+    <!-- DESKTOP MENU -->
     <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
 
       <a href="/">Trang chủ</a>
       <a href="/dich-vu">Dịch vụ</a>
 
-      <!-- MEGA -->
+      <!-- MEGA MENU -->
       <div class="relative group">
 
         <span class="cursor-pointer">Thi công theo quận</span>
 
+        <!-- FIX hover không mất -->
         <div class="absolute left-0 top-full pt-6 hidden group-hover:block">
-  <div class="w-[1000px] bg-white shadow-2xl rounded-xl p-6">
-                    opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-                    transition duration-200
-                    w-[1000px] bg-white shadow-2xl rounded-xl p-6">
+          <div class="w-[1000px] bg-white shadow-2xl rounded-xl p-6">
 
-          <div class="grid grid-cols-5 gap-6">
+            <div class="grid grid-cols-5 gap-6">
 
-            {districtMega.map(col => (
-              <div>
-                <h3 class="font-semibold mb-3">{col.title}</h3>
-                {col.districts.map(d => (
-                  <a href={`/thi-cong-decal/${d.slug}`} 
-                     class="block text-sm text-gray-600 hover:text-black py-1">
-                    {d.name}
-                  </a>
-                ))}
-              </div>
-            ))}
+              {districtMega.map(col => (
+                <div>
+                  <h3 class="font-semibold mb-3">{col.title}</h3>
+
+                  {col.districts.map(d => (
+                    <a href={`/thi-cong-decal/${d.slug}`}
+                       class="block text-sm text-gray-600 hover:text-black py-1">
+                      {d.name}
+                    </a>
+                  ))}
+
+                </div>
+              ))}
+
+            </div>
 
           </div>
-
         </div>
 
       </div>
@@ -110,8 +111,8 @@ const districtMega = [
       Báo giá miễn phí
     </a>
 
-    <!-- MOBILE BTN -->
-    <button onclick="toggleMenu()" class="md:hidden text-2xl">
+    <!-- MOBILE BUTTON -->
+    <button id="menu-btn" class="md:hidden text-2xl">
       ☰
     </button>
 
@@ -123,10 +124,10 @@ const districtMega = [
     <a href="/" class="block py-2">Trang chủ</a>
     <a href="/dich-vu" class="block py-2">Dịch vụ</a>
 
-    <!-- ACCORDION -->
-    <button data-acc="acc-main">" class="w-full flex justify-between py-2">
+    <!-- ACCORDION CHA -->
+    <button data-acc="acc-main" class="w-full flex justify-between py-2">
       Thi công theo quận
-      <span id="icon-main">+</span>
+      <span>+</span>
     </button>
 
     <div id="acc-main" class="hidden pl-3">
@@ -134,13 +135,13 @@ const districtMega = [
       {districtMega.map((col, i) => (
         <div>
 
-          <button onclick={`toggleAcc('col-${i}')`} 
+          <button data-acc={`acc-${i}`} 
                   class="w-full flex justify-between py-1 text-sm font-semibold">
             {col.title}
-            <span id={`icon-col-${i}`}>+</span>
+            <span>+</span>
           </button>
 
-          <div id={`acc-col-${i}`} class="hidden pl-3">
+          <div id={`acc-${i}`} class="hidden pl-3">
 
             {col.districts.map(d => (
               <a href={`/thi-cong-decal/${d.slug}`} class="block py-1 text-sm">
@@ -167,6 +168,7 @@ const districtMega = [
   </div>
 </header>
 
+<!-- SCRIPT CHUẨN -->
 <script>
   const btn = document.getElementById("menu-btn");
   const menu = document.getElementById("mobile-menu");
@@ -180,7 +182,9 @@ const districtMega = [
       const id = btn.dataset.acc;
       const el = document.getElementById(id);
 
-      el.classList.toggle("hidden");
+      if (el) {
+        el.classList.toggle("hidden");
+      }
     });
   });
 </script>
