@@ -18,35 +18,90 @@ export function getStaticPaths() {
 
 const { slug } = Astro.props;
 
-// ✅ map chuẩn SEO tiếng Việt
-const nameMap = {
-  "binh-thanh": "Bình Thạnh",
-  "phu-nhuan": "Phú Nhuận",
-  "tan-binh": "Tân Bình",
-  "tan-phu": "Tân Phú",
-  "binh-tan": "Bình Tân",
-  "thu-duc": "TP Thủ Đức",
-  "hoc-mon": "Hóc Môn",
-  "cu-chi": "Củ Chi",
-  "binh-chanh": "Bình Chánh",
-  "nha-be": "Nhà Bè",
-  "can-gio": "Cần Giờ"
-};
+function formatName(slug) {
+  if (slug.startsWith("quan-")) {
+    return "Quận " + slug.replace("quan-", "");
+  }
 
-const districtName = slug.startsWith("quan-")
-  ? "Quận " + slug.replace("quan-", "")
-  : nameMap[slug] || slug;
+  const map = {
+    "binh-thanh": "Bình Thạnh",
+    "phu-nhuan": "Phú Nhuận",
+    "tan-binh": "Tân Bình",
+    "tan-phu": "Tân Phú",
+    "binh-tan": "Bình Tân",
+    "thu-duc": "TP Thủ Đức",
+    "hoc-mon": "Hóc Môn",
+    "cu-chi": "Củ Chi",
+    "binh-chanh": "Bình Chánh",
+    "nha-be": "Nhà Bè",
+    "can-gio": "Cần Giờ"
+  };
+
+  return map[slug] || slug;
+}
+
+const districtName = formatName(slug);
 ---
 
 <BaseLayout title={`Thi công decal dán kính ${districtName}`}>
 
-  <section class="py-20 text-center">
-    <h1 class="text-4xl font-bold">
-      Thi công decal dán kính {districtName}
-    </h1>
-  </section>
+<!-- 🌿 HERO -->
+<section class="py-24 text-center bg-gray-50">
+  <h1 class="text-4xl md:text-5xl font-bold mb-6">
+    Thi công decal dán kính {districtName}
+  </h1>
+  <p class="max-w-2xl mx-auto text-gray-600">
+    Không gian tại {districtName}… chỉ cần một lớp decal phù hợp,
+    ánh sáng vẫn dịu dàng, nhưng sự riêng tư và thẩm mỹ đã thay đổi hoàn toàn.
+  </p>
+</section>
 
-  <!-- 🌿 Footer dynamic SEO -->
-  <Footer districtName={districtName} slug={slug} />
+<!-- 🌿 CONTENT -->
+<section class="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
+  <div>
+    <h2 class="text-2xl font-semibold mb-4">
+      Dịch vụ tại {districtName}
+    </h2>
+    <p class="text-gray-600 leading-relaxed">
+      Decal Pro cung cấp giải pháp dán kính chuyên nghiệp tại {districtName}:
+      từ văn phòng, showroom đến nhà ở. 
+      Chất liệu cao cấp, thi công tỉ mỉ, bảo hành rõ ràng.
+    </p>
+  </div>
+
+  <div>
+    <img 
+      src="/images/thi-cong-1.jpg" 
+      class="rounded-xl shadow-lg"
+      alt={`Thi công decal ${districtName}`}
+    />
+  </div>
+</section>
+
+<!-- 🌿 CTA THEO QUẬN -->
+<section class="bg-yellow-400 py-16 text-center">
+  <h2 class="text-3xl font-bold mb-4">
+    Thi công nhanh tại {districtName}
+  </h2>
+
+  <p class="mb-6 text-lg">
+    Khảo sát tận nơi – Báo giá minh bạch – Thi công trong ngày
+  </p>
+
+  <div class="flex flex-col md:flex-row gap-4 justify-center">
+    <a href="tel:0909000000" 
+       class="bg-black text-white px-6 py-3 rounded-lg font-semibold">
+       📞 Gọi ngay: 0909 000 000
+    </a>
+
+    <a href="/lien-he" 
+       class="bg-white text-black px-6 py-3 rounded-lg font-semibold border">
+       Nhận báo giá miễn phí
+    </a>
+  </div>
+</section>
+
+<!-- 🌿 FOOTER -->
+<Footer districtName={districtName} slug={slug} />
 
 </BaseLayout>
