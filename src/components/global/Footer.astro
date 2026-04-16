@@ -1,105 +1,81 @@
 ---
-const { districtName, slug } = Astro.props;
-
-const safeName = districtName || "TP.HCM";
-
-const relatedDistricts = [
-  { name: "Quận 1", slug: "quan-1" },
-  { name: "Quận 3", slug: "quan-3" },
-  { name: "Bình Thạnh", slug: "binh-thanh" },
-  { name: "TP Thủ Đức", slug: "thu-duc" },
-  { name: "Tân Bình", slug: "tan-binh" },
-  { name: "Quận 7", slug: "quan-7" },
-];
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-[#0b1a2b] text-white mt-20">
-
-  <!-- 🌿 GALLERY THI CÔNG -->
-  <div class="max-w-7xl mx-auto px-6 pt-16">
-    <h3 class="text-xl font-semibold mb-6 text-center">
-      Hình ảnh thi công gần đây tại {safeName}
-    </h3>
-
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <img src="/thi-cong-phim-cach-nhiet.webp" class="rounded-lg object-cover h-40 w-full hover:scale-105 transition" />
-      <img src="/images/thi-cong-2.jpg" class="rounded-lg object-cover h-40 w-full hover:scale-105 transition" />
-      <img src="/images/thi-cong-3.jpg" class="rounded-lg object-cover h-40 w-full hover:scale-105 transition" />
-      <img src="/images/thi-cong-4.jpg" class="rounded-lg object-cover h-40 w-full hover:scale-105 transition" />
-    </div>
-  </div>
-
-  <!-- 🌿 MAIN FOOTER -->
-  <div class="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-4 gap-10">
-
-    <!-- Brand -->
-    <div>
-      <h3 class="text-2xl font-bold mb-4">Decal Pro</h3>
-      <p class="text-gray-300 text-sm leading-relaxed">
-        Thi công decal dán kính tại {safeName} với giải pháp thẩm mỹ,
-        riêng tư và chống nắng toàn diện cho văn phòng, cửa hàng và nhà ở.
-      </p>
-
-      <p class="mt-4 text-yellow-400 font-semibold">
-        Hotline: 0909 000 000
-      </p>
-    </div>
-
-    <!-- SEO TEXT -->
-    <div>
-      <h3 class="font-semibold mb-4">Dịch vụ tại {safeName}</h3>
-      <p class="text-gray-300 text-sm leading-relaxed">
-        Decal Pro cung cấp dịch vụ thi công decal kính mờ, decal trang trí,
-        decal chống nắng tại {safeName}. Thi công nhanh, đúng kỹ thuật,
-        hỗ trợ khảo sát tận nơi.
-      </p>
-    </div>
-
-    <!-- Internal links -->
-    <div>
-      <h3 class="font-semibold mb-4">Khu vực liên quan</h3>
-      <ul class="space-y-2 text-sm text-gray-300">
-        {relatedDistricts
-          .filter((item) => item.slug !== slug)
-          .map((item) => (
-            <li>
-              <a
-                href={`/thi-cong-decal/${item.slug}`}
-                class="hover:text-yellow-400 transition"
-              >
-                Thi công decal {item.name}
-              </a>
-            </li>
-          ))}
-      </ul>
-    </div>
-
-    <!-- Social -->
-    <div>
-      <h3 class="font-semibold mb-4">Kết nối với chúng tôi</h3>
-
-      <div class="flex gap-4 mb-4">
-        <a href="#" class="bg-white/10 p-3 rounded-lg hover:bg-yellow-400 hover:text-black transition">
-          FB
-        </a>
-        <a href="#" class="bg-white/10 p-3 rounded-lg hover:bg-yellow-400 hover:text-black transition">
-          ZL
-        </a>
-        <a href="#" class="bg-white/10 p-3 rounded-lg hover:bg-yellow-400 hover:text-black transition">
-          TT
-        </a>
+<footer class="bg-[#0f172a] text-slate-300 pt-16 pb-8">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      
+      <div class="space-y-4">
+        <h3 class="text-white text-xl font-bold mb-4">Decal Pro</h3>
+        <p class="text-sm leading-relaxed">
+          Đơn vị chuyên nghiệp trong lĩnh vực thi công decal dán kính mờ, decal chống nắng và trang trí nội thất tại TP.HCM.
+        </p>
+        <div class="flex gap-3 pt-2">
+          <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition-colors" aria-label="Facebook">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://zalo.me/0862208108" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-500 transition-colors font-bold text-xs" aria-label="Zalo">ZL</a>
+          <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-black transition-colors" aria-label="TikTok">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31.036 2.512.335 3.6.895a7.443 7.443 0 0 1 3.188 3.366c.07.14.14.28.21.421a1.011 1.011 0 0 0 .1.14c1.1.01 2.19.01 3.29.01.12 0 .21.01.27.13.04.1.04.2.04.3a7.4 7.4 0 0 1-2.94 5.32 5.483 5.483 0 0 0 2.39-.12.1.1 0 0 1 .14.1c-.01 1.05-.01 2.1-.01 3.15 0 .1-.05.18-.13.23a7.485 7.485 0 0 1-5.69 1.06 3.493 3.493 0 0 1-2.45-3.05c-.01-.13 0-.26 0-.4 0-1.93.01-3.86.01-5.79 0-.21-.01-.4-.14-.58a3.46 3.46 0 0 0-4.49-1.2 3.483 3.483 0 0 0-1.93 3.1c-.01 1.48-.01 2.97-.01 4.45 0 .12-.01.24.03.35a3.475 3.475 0 0 0 6.64 1.13c.04-.1.03-.21.03-.31V7.12c1.02.72 2.21 1.11 3.44 1.11.1 0 .21 0 .31-.01v-2.91a4.51 4.51 0 0 1-2.58-.93 4.47 4.47 0 0 1-1.63-2.1c-.04-.11-.08-.23-.11-.34-.02-.12-.09-.16-.21-.16-1.16.01-2.31.01-3.47.01Z"/></svg>
+          </a>
+        </div>
       </div>
 
-      <p class="text-sm text-gray-300">
-        Theo dõi chúng tôi để xem thêm các công trình thực tế mỗi ngày.
-      </p>
+      <div>
+        <h3 class="text-white text-lg font-bold mb-4">Thông tin liên hệ</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-3">
+            <span class="text-yellow-500">📍</span>
+            <span>123 Đường Số 4, Phường Linh Tây, TP. Thủ Đức, TP.HCM</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-yellow-500">📞</span>
+            <a href="tel:0862208108" class="hover:text-white transition-colors font-semibold">0862.208.108</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-yellow-500">✉️</span>
+            <a href="mailto:contact@thicongdecal.pro" class="hover:text-white transition-colors">contact@idecal.vn</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-yellow-500">🌐</span>
+            <span>www.thicongdecal.pro</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white text-lg font-bold mb-4">Dịch vụ trọng tâm</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/dich-vu/decal-dan-kinh-mo" class="hover:text-yellow-500 transition-colors">Thi công decal dán kính mờ</a></li>
+          <li><a href="/dich-vu/phim-cach-nhiet" class="hover:text-yellow-500 transition-colors">Dán phim cách nhiệt nhà kính</a></li>
+          <li><a href="/dich-vu/decal-trang-tri" class="hover:text-yellow-500 transition-colors">Decal trang trí văn phòng</a></li>
+          <li><a href="/dich-vu/cat-chu-decal" class="hover:text-yellow-500 transition-colors">Cắt chữ decal logo theo yêu cầu</a></li>
+          <li><a href="/dich-vu/decal-hoa-van" class="hover:text-yellow-500 transition-colors">Decal hoa văn nghệ thuật</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white text-lg font-bold mb-4">Khu vực hỗ trợ</h3>
+        <div class="grid grid-cols-2 gap-x-2 gap-y-2 text-xs">
+          <a href="/khu-vuc/quan-1" class="hover:text-white">Dán kính Quận 1</a>
+          <a href="/khu-vuc/quan-3" class="hover:text-white">Dán kính Quận 3</a>
+          <a href="/khu-vuc/quan-7" class="hover:text-white">Dán kính Quận 7</a>
+          <a href="/khu-vuc/thu-duc" class="hover:text-white">Dán kính Thủ Đức</a>
+          <a href="/khu-vuc/binh-thanh" class="hover:text-white">Bình Thạnh</a>
+          <a href="/khu-vuc/tan-binh" class="hover:text-white">Tân Bình</a>
+        </div>
+      </div>
     </div>
 
-  </div>
+    <hr class="border-slate-800 mb-8" />
 
-  <!-- Bottom -->
-  <div class="border-t border-white/10 text-center text-sm text-gray-400 py-5">
-    © 2026 Decal Pro — Thi công decal dán kính tại {safeName}
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+      <p>© {currentYear} Decal Pro. Thiết kế bởi iDecal.vn</p>
+      <div class="flex gap-6">
+        <a href="/chinh-sach-bao-mat" class="hover:text-white">Chính sách bảo mật</a>
+        <a href="/dieu-khoan-dich-vu" class="hover:text-white">Điều khoản</a>
+      </div>
+    </div>
   </div>
-
 </footer>
