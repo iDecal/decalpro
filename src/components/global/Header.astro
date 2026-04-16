@@ -5,50 +5,84 @@ const districtMega = [
     districts: [
       { name: "Quận 1", slug: "quan-1" },
       { name: "Quận 3", slug: "quan-3" },
+      { name: "Quận 4", slug: "quan-4" },
       { name: "Quận 5", slug: "quan-5" },
-      { name: "Quận 10", slug: "quan-10" }
+      { name: "Quận 6", slug: "quan-6" },
+      { name: "Quận 8", slug: "quan-8" },
+      { name: "Quận 10", slug: "quan-10" },
+      { name: "Quận 11", slug: "quan-11" }
     ]
   },
   {
     title: "Khu Đông",
     districts: [
-      { name: "Thủ Đức", slug: "thu-duc" },
+      { name: "TP Thủ Đức", slug: "thu-duc" },
       { name: "Quận 2", slug: "quan-2" },
-      { name: "Quận 9", slug: "quan-9" }
+      { name: "Quận 9", slug: "quan-9" },
+      { name: "Bình Thạnh", slug: "binh-thanh" },
+      { name: "Phú Nhuận", slug: "phu-nhuan" }
+    ]
+  },
+  {
+    title: "Khu Tây",
+    districts: [
+      { name: "Tân Bình", slug: "tan-binh" },
+      { name: "Tân Phú", slug: "tan-phu" },
+      { name: "Bình Tân", slug: "binh-tan" },
+      { name: "Quận 12", slug: "quan-12" }
+    ]
+  },
+  {
+    title: "Khu Nam",
+    districts: [
+      { name: "Quận 7", slug: "quan-7" },
+      { name: "Nhà Bè", slug: "nha-be" },
+      { name: "Cần Giờ", slug: "can-gio" }
+    ]
+  },
+  {
+    title: "Ngoại thành",
+    districts: [
+      { name: "Hóc Môn", slug: "hoc-mon" },
+      { name: "Củ Chi", slug: "cu-chi" },
+      { name: "Bình Chánh", slug: "binh-chanh" }
     ]
   }
 ];
+
+function toggleMenu() {
+  const menu = document.getElementById("mobile-menu");
+  if (menu) menu.classList.toggle("hidden");
+}
 ---
 
-<header class="sticky top-0 z-50 bg-white border-b shadow-sm">
+<header class="sticky top-0 z-50 bg-white border-b">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
     <!-- 🌿 LOGO -->
-    <a href="/" class="flex items-center gap-2">
-      <img src="/images/logo.png" alt="Decal Pro" class="h-10 w-auto" />
-      <span class="font-bold text-lg">Decal Pro</span>
+    <a href="/" class="flex items-center gap-2 font-bold text-lg">
+      <img src="/images/logo.png" alt="Decal Pro" class="h-9 w-auto" />
+      <span>Decal Pro</span>
     </a>
 
-    <!-- 🌿 MENU -->
+    <!-- 🌿 MENU DESKTOP -->
     <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
 
-      <a href="/" class="hover:text-yellow-500">Trang chủ</a>
-      <a href="/dich-vu" class="hover:text-yellow-500">Dịch vụ</a>
+      <a href="/">Trang chủ</a>
+      <a href="/dich-vu">Dịch vụ</a>
 
-      <!-- Mega menu -->
+      <!-- 🌿 MEGA MENU -->
       <div class="relative group">
 
-        <span class="cursor-pointer hover:text-yellow-500">
-          Thi công theo quận
-        </span>
+        <span class="cursor-pointer">Thi công theo quận</span>
 
-        <div class="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover:block w-[900px] bg-white shadow-2xl rounded-xl p-6">
+        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-4 hidden group-hover:block w-[1000px] bg-white shadow-xl rounded-xl p-6">
 
-          <div class="grid grid-cols-2 gap-8">
+          <div class="grid grid-cols-5 gap-6">
 
             {districtMega.map(col => (
               <div>
-                <h3 class="font-semibold mb-3 text-gray-900">{col.title}</h3>
+                <h3 class="font-semibold mb-3">{col.title}</h3>
                 {col.districts.map(d => (
                   <a href={`/thi-cong-decal/${d.slug}`} class="block text-sm text-gray-600 hover:text-black py-1">
                     {d.name}
@@ -63,26 +97,26 @@ const districtMega = [
 
       </div>
 
-      <a href="/du-an" class="hover:text-yellow-500">Dự án</a>
-      <a href="/blog" class="hover:text-yellow-500">Blog</a>
-      <a href="/lien-he" class="hover:text-yellow-500">Liên hệ</a>
+      <a href="/du-an">Dự án</a>
+      <a href="/blog">Blog</a>
+      <a href="/lien-he">Liên hệ</a>
 
     </nav>
 
-    <!-- 🌿 CTA BUTTON -->
+    <!-- 🌿 CTA -->
     <a href="/lien-he"
-       class="hidden md:inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg shadow">
+       class="hidden md:inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg">
       Báo giá miễn phí
     </a>
 
-    <!-- 🌿 MOBILE BUTTON -->
+    <!-- 🌿 MOBILE BTN -->
     <button onclick="toggleMenu()" class="md:hidden text-2xl">
       ☰
     </button>
 
   </div>
 
-  <!-- 🌿 MOBILE MENU -->
+  <!-- 🌿 MOBILE -->
   <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 border-t">
 
     <a href="/" class="block py-2">Trang chủ</a>
@@ -99,10 +133,3 @@ const districtMega = [
 
   </div>
 </header>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("mobile-menu");
-    if (menu) menu.classList.toggle("hidden");
-  }
-</script>
