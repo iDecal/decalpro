@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-// 🔥 PHẢI đặt trên cùng (QUAN TRỌNG)
+// ✅ TẤT CẢ phải nằm trong 1 block --- DUY NHẤT
 const districts = [
   "quan-1","quan-2","quan-3","quan-4","quan-5","quan-6","quan-7","quan-8",
   "quan-9","quan-10","quan-11","quan-12",
@@ -9,7 +9,6 @@ const districts = [
   "thu-duc","hoc-mon","cu-chi","binh-chanh","nha-be","can-gio"
 ];
 
-// 🔥 KHÔNG được đặt trước districts
 export function getStaticPaths() {
   return districts.map((slug) => ({
     params: { district: slug },
@@ -19,7 +18,6 @@ export function getStaticPaths() {
 
 const { slug } = Astro.props;
 
-// format tên
 function formatName(slug) {
   const map = {
     "binh-thanh": "Bình Thạnh",
@@ -45,21 +43,12 @@ function formatName(slug) {
 const districtName = formatName(slug);
 ---
 
-<BaseLayout
-  title={`Thi công decal dán kính ${districtName}`}
-  description={`Dịch vụ decal dán kính ${districtName} chuyên nghiệp`}
->
+<BaseLayout title={`Thi công decal dán kính ${districtName}`}>
 
 <section class="py-20 text-center">
-  <h1 class="text-4xl font-bold mb-6">
+  <h1 class="text-4xl font-bold">
     Thi công decal dán kính {districtName}
   </h1>
-
-  <p class="text-gray-600 max-w-2xl mx-auto">
-    Không gian tại {districtName} mang một nhịp sống riêng —
-    và mỗi lớp decal là một cách để giữ lại ánh sáng,
-    nhưng dịu đi cái nhìn, và làm mềm đi cái nắng.
-  </p>
 </section>
 
 </BaseLayout>
