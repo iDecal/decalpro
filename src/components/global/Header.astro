@@ -49,34 +49,32 @@ const districtMega = [
     ]
   }
 ];
-
-function toggleMenu() {
-  const menu = document.getElementById("mobile-menu");
-  if (menu) menu.classList.toggle("hidden");
-}
 ---
 
-<header class="sticky top-0 z-50 bg-white border-b">
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b shadow-sm">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
-    <!-- 🌿 LOGO -->
+    <!-- LOGO -->
     <a href="/" class="flex items-center gap-2 font-bold text-lg">
-      <img src="/images/logo.png" alt="Decal Pro" class="h-9 w-auto" />
-      <span>Decal Pro</span>
+      <img src="/images/logo.png" class="h-9" alt="Decal Pro" />
+      Decal Pro
     </a>
 
-    <!-- 🌿 MENU DESKTOP -->
+    <!-- DESKTOP -->
     <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
 
       <a href="/">Trang chủ</a>
       <a href="/dich-vu">Dịch vụ</a>
 
-      <!-- 🌿 MEGA MENU -->
+      <!-- MEGA -->
       <div class="relative group">
 
         <span class="cursor-pointer">Thi công theo quận</span>
 
-        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-4 hidden group-hover:block w-[1000px] bg-white shadow-xl rounded-xl p-6">
+        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-4 
+                    opacity-0 invisible group-hover:opacity-100 group-hover:visible 
+                    transition duration-200
+                    w-[1000px] bg-white shadow-2xl rounded-xl p-6">
 
           <div class="grid grid-cols-5 gap-6">
 
@@ -84,7 +82,8 @@ function toggleMenu() {
               <div>
                 <h3 class="font-semibold mb-3">{col.title}</h3>
                 {col.districts.map(d => (
-                  <a href={`/thi-cong-decal/${d.slug}`} class="block text-sm text-gray-600 hover:text-black py-1">
+                  <a href={`/thi-cong-decal/${d.slug}`} 
+                     class="block text-sm text-gray-600 hover:text-black py-1">
                     {d.name}
                   </a>
                 ))}
@@ -103,25 +102,58 @@ function toggleMenu() {
 
     </nav>
 
-    <!-- 🌿 CTA -->
+    <!-- CTA -->
     <a href="/lien-he"
-       class="hidden md:inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-5 py-2 rounded-lg">
+       class="hidden md:inline-block bg-yellow-400 hover:bg-yellow-500 
+              text-black font-semibold px-5 py-2 rounded-lg shadow">
       Báo giá miễn phí
     </a>
 
-    <!-- 🌿 MOBILE BTN -->
+    <!-- MOBILE BTN -->
     <button onclick="toggleMenu()" class="md:hidden text-2xl">
       ☰
     </button>
 
   </div>
 
-  <!-- 🌿 MOBILE -->
+  <!-- MOBILE MENU -->
   <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 border-t">
 
     <a href="/" class="block py-2">Trang chủ</a>
     <a href="/dich-vu" class="block py-2">Dịch vụ</a>
-    <a href="/thi-cong-decal" class="block py-2">Thi công theo quận</a>
+
+    <!-- ACCORDION -->
+    <button onclick="toggleAcc('main')" class="w-full flex justify-between py-2">
+      Thi công theo quận
+      <span id="icon-main">+</span>
+    </button>
+
+    <div id="acc-main" class="hidden pl-3">
+
+      {districtMega.map((col, i) => (
+        <div>
+
+          <button onclick={`toggleAcc('col-${i}')`} 
+                  class="w-full flex justify-between py-1 text-sm font-semibold">
+            {col.title}
+            <span id={`icon-col-${i}`}>+</span>
+          </button>
+
+          <div id={`acc-col-${i}`} class="hidden pl-3">
+
+            {col.districts.map(d => (
+              <a href={`/thi-cong-decal/${d.slug}`} class="block py-1 text-sm">
+                {d.name}
+              </a>
+            ))}
+
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
     <a href="/du-an" class="block py-2">Dự án</a>
     <a href="/blog" class="block py-2">Blog</a>
     <a href="/lien-he" class="block py-2">Liên hệ</a>
@@ -133,3 +165,22 @@ function toggleMenu() {
 
   </div>
 </header>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  }
+
+  function toggleAcc(id) {
+    const el = document.getElementById("acc-" + id);
+    const icon = document.getElementById("icon-" + id);
+
+    if (!el) return;
+
+    el.classList.toggle("hidden");
+
+    if (icon) {
+      icon.innerText = el.classList.contains("hidden") ? "+" : "-";
+    }
+  }
+</script>
