@@ -1,14 +1,25 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import Hero from "@/components/landing/Hero.astro";
-import Products from "@/components/landing/Dichvu.astro";
-import About from "@/components/landing/AboutSection.astro";
-import FAQ from "@/components/landing/FAQ.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/landing/Hero.astro";
+import Services from "../components/landing/Services.astro";
+import Projects from "../components/landing/Projects.astro";
+import DistrictLinks from "../components/landing/DistrictLinks.astro";
+import FAQ from "../components/landing/FAQ.astro";
+import CTA from "../components/landing/CTA.astro";
+import Footer from "../components/global/Footer.astro";
 ---
 
-<BaseLayout>
+<BaseLayout 
+  title="Thi công decal dán kính TP.HCM | Decal Pro"
+  description="Dịch vụ thi công decal dán kính chuyên nghiệp tại TP.HCM. Decal mờ, chống nắng, trang trí. Khảo sát tận nơi, thi công nhanh."
+>
+
   <Hero />
-  <Products />
-  <About />
+  <Services />
+  <Projects />
+  <DistrictLinks />
   <FAQ />
+  <CTA />
+  <Footer />
+
 </BaseLayout>
