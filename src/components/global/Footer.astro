@@ -1,6 +1,8 @@
 ---
 const { districtName, slug } = Astro.props;
 
+const safeName = districtName || "TP.HCM";
+
 const relatedDistricts = [
   { name: "Quận 1", slug: "quan-1" },
   { name: "Quận 3", slug: "quan-3" },
@@ -11,27 +13,51 @@ const relatedDistricts = [
 ];
 ---
 
-<footer class="bg-gray-900 text-white mt-16">
-  <div class="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-3 gap-10">
+<footer class="bg-[#0b1a2b] text-white mt-20">
 
-    <!-- SEO text -->
+  <!-- 🌿 GALLERY THI CÔNG -->
+  <div class="max-w-7xl mx-auto px-6 pt-16">
+    <h3 class="text-xl font-semibold mb-6 text-center">
+      Hình ảnh thi công gần đây tại {safeName}
+    </h3>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <img src="/images/thi-cong-1.jpg" class="rounded-lg object-cover h-40 w-full hover:scale-105 transition" />
+      <img src="/images/thi-cong-2.jpg" class="rounded-lg object-cover h-40 w-full hover:scale-105 transition" />
+      <img src="/images/thi-cong-3.jpg" class="rounded-lg object-cover h-40 w-full hover:scale-105 transition" />
+      <img src="/images/thi-cong-4.jpg" class="rounded-lg object-cover h-40 w-full hover:scale-105 transition" />
+    </div>
+  </div>
+
+  <!-- 🌿 MAIN FOOTER -->
+  <div class="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-4 gap-10">
+
+    <!-- Brand -->
     <div>
-      <h3 class="text-xl font-bold mb-4">
-        Thi công decal dán kính {districtName}
-      </h3>
-      <p class="text-gray-300 leading-relaxed text-sm">
-        Decal Pro cung cấp dịch vụ thi công decal dán kính tại {districtName}
-        với giải pháp tối ưu cho văn phòng, cửa hàng, nhà ở và showroom.
-        Đội ngũ thi công nhanh chóng, thẩm mỹ cao, hỗ trợ khảo sát tận nơi
-        trên toàn khu vực TP.HCM.
+      <h3 class="text-2xl font-bold mb-4">Decal Pro</h3>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Thi công decal dán kính tại {safeName} với giải pháp thẩm mỹ,
+        riêng tư và chống nắng toàn diện cho văn phòng, cửa hàng và nhà ở.
+      </p>
+
+      <p class="mt-4 text-yellow-400 font-semibold">
+        Hotline: 0909 000 000
+      </p>
+    </div>
+
+    <!-- SEO TEXT -->
+    <div>
+      <h3 class="font-semibold mb-4">Dịch vụ tại {safeName}</h3>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Decal Pro cung cấp dịch vụ thi công decal kính mờ, decal trang trí,
+        decal chống nắng tại {safeName}. Thi công nhanh, đúng kỹ thuật,
+        hỗ trợ khảo sát tận nơi.
       </p>
     </div>
 
     <!-- Internal links -->
     <div>
-      <h3 class="text-xl font-bold mb-4">
-        Khu vực thi công nổi bật
-      </h3>
+      <h3 class="font-semibold mb-4">Khu vực liên quan</h3>
       <ul class="space-y-2 text-sm text-gray-300">
         {relatedDistricts
           .filter((item) => item.slug !== slug)
@@ -41,27 +67,39 @@ const relatedDistricts = [
                 href={`/thi-cong-decal/${item.slug}`}
                 class="hover:text-yellow-400 transition"
               >
-                Thi công decal dán kính {item.name}
+                Thi công decal {item.name}
               </a>
             </li>
           ))}
       </ul>
     </div>
 
-    <!-- Company info -->
+    <!-- Social -->
     <div>
-      <h3 class="text-xl font-bold mb-4">Decal Pro</h3>
-      <p class="text-sm text-gray-300 leading-relaxed">
-        Chuyên thi công decal kính mờ, decal trang trí, decal chống nắng
-        cho doanh nghiệp và hộ gia đình tại TP.HCM.
-      </p>
-      <p class="mt-3 text-yellow-400 font-semibold">
-        Hotline: 0909 000 000
+      <h3 class="font-semibold mb-4">Kết nối với chúng tôi</h3>
+
+      <div class="flex gap-4 mb-4">
+        <a href="#" class="bg-white/10 p-3 rounded-lg hover:bg-yellow-400 hover:text-black transition">
+          FB
+        </a>
+        <a href="#" class="bg-white/10 p-3 rounded-lg hover:bg-yellow-400 hover:text-black transition">
+          ZL
+        </a>
+        <a href="#" class="bg-white/10 p-3 rounded-lg hover:bg-yellow-400 hover:text-black transition">
+          TT
+        </a>
+      </div>
+
+      <p class="text-sm text-gray-300">
+        Theo dõi chúng tôi để xem thêm các công trình thực tế mỗi ngày.
       </p>
     </div>
+
   </div>
 
-  <div class="border-t border-gray-800 text-center text-sm text-gray-400 py-4">
-    © 2026 Decal Pro - Thi công decal dán kính tại {districtName}
+  <!-- Bottom -->
+  <div class="border-t border-white/10 text-center text-sm text-gray-400 py-5">
+    © 2026 Decal Pro — Thi công decal dán kính tại {safeName}
   </div>
+
 </footer>
