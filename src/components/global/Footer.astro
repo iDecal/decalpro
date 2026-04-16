@@ -1,95 +1,43 @@
----
-const currentYear = new Date().getFullYear();
-
-// Mảng chứa các dự án gần đây để dễ quản lý
-const recentProjects = [
-  { img: "/images/du-an/quan-1.webp", title: "Dán decal mờ văn phòng", location: "Quận 1" },
-  { img: "/images/du-an/quan-7.webp", title: "Phim cách nhiệt căn hộ", location: "Quận 7" },
-  { img: "/images/du-an/thu-duc.webp", title: "Cắt chữ logo decal mờ", location: "Thủ Đức" },
-  { img: "/images/du-an/binh-thanh.webp", title: "Decal hoa văn trang trí", location: "Bình Thạnh" },
-];
----
-
-<footer class="bg-[#0b1120] text-slate-400 border-t border-slate-800">
-  <div class="max-w-7xl mx-auto px-6 pt-16">
-    <div class="text-center mb-10">
-      <h2 class="text-white text-2xl font-bold mb-2">Hình ảnh thi công gần đây tại TP.HCM</h2>
-      <p class="text-sm">Cam kết chất lượng trên từng công trình thực tế</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-slate-800/50 pt-12">
+  
+  <div class="space-y-4">
+    <div class="flex items-center gap-2">
+       <img src="/favicon.png" class="h-7 w-auto" alt="Logo" />
+       <span class="text-white text-lg font-bold">DECAL PRO</span>
     </div>
-    
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-      {recentProjects.map((project) => (
-        <div class="group relative overflow-hidden rounded-xl bg-slate-800 aspect-[4/3]">
-          <img 
-            src={project.img} 
-            alt={`${project.title} tại ${project.location}`} 
-            class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-          />
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
-            <p class="text-white text-[11px] font-medium leading-tight">{project.title}</p>
-            <p class="text-yellow-500 text-[10px] font-bold uppercase">{project.location}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+    <p class="text-xs leading-relaxed">
+      Chuyên gia thi công decal kính văn phòng, phim cách nhiệt tại TP.HCM. Uy tín - Tận tâm - Bảo hành dài hạn.
+    </p>
+    <div class="flex gap-2">
+      </div>
   </div>
 
-  <div class="max-w-7xl mx-auto px-6 pb-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-slate-800/50 pt-12">
-      
-      <div class="space-y-6">
-        <div class="flex items-center gap-2">
-           <img src="/favicon.png" class="h-8 w-auto" alt="Logo Decal Pro" />
-           <span class="text-white text-xl font-black tracking-tight uppercase">Decal Pro</span>
-        </div>
-        <p class="text-sm leading-relaxed">
-          Đơn vị chuyên nghiệp cung cấp giải pháp dán kính văn phòng, phim cách nhiệt và trang trí nội thất hàng đầu tại TP.HCM. 
-        </p>
-        <div class="flex gap-3">
-          <a href="#" class="p-2 bg-slate-800 rounded-full hover:bg-blue-600 transition-colors">
-            <span class="sr-only">Facebook</span>
-            <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a href="https://zalo.me/0862208108" class="px-3 py-1 bg-slate-800 rounded-full hover:bg-sky-600 transition-colors text-white font-bold text-[10px] flex items-center">ZALO</a>
-        </div>
-      </div>
+  <div class="space-y-4">
+    <h3 class="text-white font-bold text-sm uppercase tracking-wider">Dịch vụ</h3>
+    <ul class="space-y-2 text-xs">
+      <li><a href="#" class="hover:text-yellow-500">Decal dán kính mờ</a></li>
+      <li><a href="#" class="hover:text-yellow-500">Phim cách nhiệt nhà kính</a></li>
+      <li><a href="#" class="hover:text-yellow-500">Cắt dán logo công ty</a></li>
+      <li><a href="#" class="hover:text-yellow-500">Decal trang trí nghệ thuật</a></li>
+    </ul>
+  </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:col-span-2">
-        <div class="space-y-4">
-          <h3 class="text-white font-bold uppercase text-sm tracking-widest">Dịch vụ chính</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/dich-vu/decal-dan-kinh-mo" class="hover:text-yellow-500 transition-colors">Decal dán kính mờ</a></li>
-            <li><a href="/dich-vu/phim-cach-nhiet" class="hover:text-yellow-500 transition-colors">Phim cách nhiệt</a></li>
-            <li><a href="/dich-vu/cat-chu-decal" class="hover:text-yellow-500 transition-colors">Cắt decal logo</a></li>
-          </ul>
-        </div>
+  <div class="space-y-4">
+    <h3 class="text-white font-bold text-sm uppercase tracking-wider">Tại sao chọn chúng tôi?</h3>
+    <ul class="space-y-2 text-xs">
+      <li class="flex items-center gap-2">✔ Khảo sát tận nơi miễn phí</li>
+      <li class="flex items-center gap-2">✔ Thi công sạch sẽ, nhanh gọn</li>
+      <li class="flex items-center gap-2">✔ Bảo hành bong tróc 2-5 năm</li>
+      <li class="flex items-center gap-2">✔ Giá thành cạnh tranh nhất</li>
+    </ul>
+  </div>
 
-        <div class="space-y-4">
-          <h3 class="text-white font-bold uppercase text-sm tracking-widest">Thông tin liên hệ</h3>
-          <ul class="space-y-3 text-sm">
-            <li class="flex gap-2">
-              <span class="text-yellow-500">📍</span>
-              <span>Thủ Đức, TP. Hồ Chí Minh</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-yellow-500">📞</span>
-              <a href="tel:0862208108" class="text-white font-bold hover:text-yellow-500 text-lg">0862.208.108</a>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-yellow-500">✉️</span>
-              <a href="mailto:contact@thicongdecal.pro" class="hover:text-white transition-colors">contact@thicongdecal.pro</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-16 pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px]">
-      <p>© {currentYear} <strong>thicongdecal.pro</strong> — Thi công decal dán kính chuyên nghiệp</p>
-      <div class="flex gap-6 uppercase">
-        <a href="/bao-gia" class="hover:text-white">Báo giá</a>
-        <a href="/chinh-sach" class="hover:text-white">Chính sách bảo hành</a>
-      </div>
+  <div class="space-y-4">
+    <h3 class="text-white font-bold text-sm uppercase tracking-wider">Liên hệ ngay</h3>
+    <div class="space-y-3 text-xs">
+      <p class="flex items-center gap-2">📍 Thủ Đức, TP. Hồ Chí Minh</p>
+      <p class="flex items-center gap-2 font-bold text-white text-base">📞 0862.208.108</p>
+      <p class="flex items-center gap-2 uppercase font-semibold text-yellow-500">Zalo: 0862.208.108</p>
     </div>
   </div>
-</footer>
+</div>
