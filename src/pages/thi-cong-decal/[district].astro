@@ -100,5 +100,14 @@ const districtName = formatName(slug);
     </a>
   </div>
 </section>
-
+<section class="py-12 bg-white text-center">
+  <h3 class="text-xl font-bold mb-6">Khu vực thi công khác tại TP.HCM</h3>
+  <div class="flex flex-wrap justify-center gap-2">
+    {["quan-1", "quan-7", "binh-thanh"].map((item) => (
+      <a href={`/thi-cong-decal/${item}`} class="text-blue-600 hover:underline">
+        Dán kính {formatName(item)}
+      </a>
+    ))}
+  </div>
+</section>
 </BaseLayout>
