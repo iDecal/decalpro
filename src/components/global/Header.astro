@@ -1,121 +1,59 @@
-<header class="w-full bg-white/80 backdrop-blur sticky top-0 z-50">
-<div class="w-full max-w-6xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+---
+import { districtMega } from "../data/districtMega"
+---
 
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2">
-      <img src="/images/DecalPro.png" alt="DecalPro" width="50" />
-    </a>
+<div class="relative group">
 
-    <!-- MENU DESKTOP -->
-    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+  <a href="/thi-cong-decal" class="font-medium">
+    Thi công theo quận
+  </a>
 
-      <a href="/" class="hover:text-blue-600">Home</a>
-      <a href="/gioi-thieu" class="hover:text-blue-600">Giới thiệu</a>
-      <a href="/dich-vu" class="hover:text-blue-600">Dịch vụ</a>
-      <a href="/thi-cong" class="hover:text-blue-600">Hình ảnh thi công</a>
+  <!-- 🌿 Mega Menu -->
+  <div class="absolute left-1/2 -translate-x-1/2 top-full mt-4 hidden group-hover:block w-[900px] bg-white shadow-2xl rounded-2xl p-8">
 
-      <!-- KHU VỰC PRO DROPDOWN -->
-      <div class="relative group">
+    <div class="grid grid-cols-3 gap-8">
 
-        <!-- TRIGGER -->
-        <a href="/khu-vuc" class="flex items-center gap-1 hover:text-blue-600 py-2">
-          Khu vực <span class="text-xs">▾</span>
-        </a>
+      {districtMega.map((col) => (
+        <div>
+          <h3 class="font-semibold mb-4 text-gray-900">
+            {col.title}
+          </h3>
 
-        <!-- BRIDGE + DROPDOWN -->
-        <div class="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <ul class="space-y-2 text-sm">
 
-          <div class="w-[460px] bg-white border shadow-xl rounded-lg p-4">
+            {col.districts.map((d) => (
+              <li>
+                <a
+                  href={`/thi-cong-decal/${d.slug}`}
+                  class="text-gray-600 hover:text-black transition"
+                >
+                  Thi công decal dán kính {d.name}
+                </a>
+              </li>
+            ))}
 
-            <div class="text-xs font-semibold text-gray-500 mb-3">
-              Khu vực thi công tại TP.HCM
-            </div>
-
-            <div class="grid grid-cols-3 gap-2 text-sm">
-
-              <a href="/khu-vuc/quan-1" class="hover:text-blue-600">Quận 1</a>
-              <a href="/khu-vuc/quan-3" class="hover:text-blue-600">Quận 3</a>
-              <a href="/khu-vuc/quan-4" class="hover:text-blue-600">Quận 4</a>
-
-              <a href="/khu-vuc/quan-5" class="hover:text-blue-600">Quận 5</a>
-              <a href="/khu-vuc/quan-7" class="hover:text-blue-600">Quận 7</a>
-              <a href="/khu-vuc/quan-10" class="hover:text-blue-600">Quận 10</a>
-
-              <a href="/khu-vuc/binh-thanh" class="hover:text-blue-600">Bình Thạnh</a>
-              <a href="/khu-vuc/go-vap" class="hover:text-blue-600">Gò Vấp</a>
-              <a href="/khu-vuc/tan-binh" class="hover:text-blue-600">Tân Bình</a>
-
-              <a href="/khu-vuc/phu-nhuan" class="hover:text-blue-600">Phú Nhuận</a>
-              <a href="/khu-vuc/thu-duc" class="hover:text-blue-600">Thủ Đức</a>
-              <a href="/khu-vuc/tan-phu" class="hover:text-blue-600">Tân Phú</a>
-
-            </div>
-
-            <div class="mt-4 pt-3 border-t text-xs text-gray-500 flex justify-between items-center">
-              <span>Thi công toàn TP.HCM</span>
-              <a href="/lien-he" class="text-blue-600 font-medium">Báo giá →</a>
-            </div>
-
-          </div>
+          </ul>
         </div>
-      </div>
+      ))}
 
-      <a href="/blog" class="hover:text-blue-600">Blog</a>
-      <a href="/lien-he" class="hover:text-blue-600">Liên hệ</a>
-
-    </nav>
-
-    <!-- CTA -->
-    <div class="hidden lg:block">
-      <a href="/lien-he"
-         class="px-5 py-2 font-medium transition"
-         style="background:#ffdf3c; color:#000;">
-        Báo giá miễn phí
-      </a>
     </div>
 
-    <!-- MOBILE -->
-    <button id="menu-btn" class="lg:hidden text-2xl">☰</button>
+    <!-- 🌿 CTA trong mega menu -->
+    <div class="mt-8 pt-6 border-t flex items-center justify-between">
 
-  </div>
+      <p class="text-sm text-gray-600">
+        Tư vấn miễn phí tận nơi tại TP.HCM
+      </p>
 
-  <!-- MOBILE MENU -->
-  <div id="mobile-menu" class="hidden border-t bg-white">
-    <div class="flex flex-col p-4 gap-3 text-sm">
-
-      <a href="/">Home</a>
-      <a href="/gioi-thieu">Giới thiệu</a>
-      <a href="/dich-vu">Dịch vụ</a>
-
-      <div class="font-semibold mt-2">Khu vực</div>
-
-      <a href="/khu-vuc/quan-1">Quận 1</a>
-      <a href="/khu-vuc/quan-3">Quận 3</a>
-      <a href="/khu-vuc/quan-4">Quận 4</a>
-      <a href="/khu-vuc/quan-5">Quận 5</a>
-      <a href="/khu-vuc/quan-7">Quận 7</a>
-      <a href="/khu-vuc/go-vap">Gò Vấp</a>
-      <a href="/khu-vuc/binh-thanh">Bình Thạnh</a>
-      <a href="/khu-vuc/thu-duc">Thủ Đức</a>
-
-      <a href="/thi-cong">Hình ảnh thi công</a>
-      <a href="/blog">Blog</a>
-
-      <a href="/lien-he"
-         class="text-center py-2 mt-2"
-         style="background:#ffdf3c; color:#000;">
-        Báo giá miễn phí
+      <a
+        href="/bao-gia"
+        class="bg-yellow-400 px-5 py-2 rounded-xl font-semibold hover:bg-yellow-300"
+      >
+        Nhận báo giá
       </a>
 
     </div>
+
   </div>
 
-  <!-- MOBILE SCRIPT -->
-  <script is:inline>
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    btn?.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-  </script>
-</header>
+</div>
