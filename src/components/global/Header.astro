@@ -1,3 +1,4 @@
+---
 const districtMega = [
   {
     title: "Khu trung tâm",
@@ -48,3 +49,112 @@ const districtMega = [
     ]
   }
 ];
+
+function toggleMenu() {
+  const menu = document.getElementById("mobile-menu");
+  if (menu) menu.classList.toggle("hidden");
+}
+
+function toggleAccordion(id) {
+  const el = document.getElementById("accordion-" + id);
+  const icon = document.getElementById("icon-" + id);
+  if (!el) return;
+
+  el.classList.toggle("hidden");
+  if (icon) icon.innerText = el.classList.contains("hidden") ? "+" : "-";
+}
+---
+
+<header class="sticky top-0 z-50 bg-white border-b">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <a href="/" class="font-bold text-lg">Decal Pro</a>
+
+    <!-- Desktop -->
+    <nav class="hidden md:flex gap-8 text-sm">
+
+      <a href="/">Trang chủ</a>
+      <a href="/dich-vu">Dịch vụ</a>
+
+      <!-- Mega -->
+      <div class="relative group">
+
+        <span class="cursor-pointer">Thi công theo quận</span>
+
+        <div class="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover:block w-[1000px] bg-white shadow-xl p-6">
+
+          <div class="grid grid-cols-5 gap-6">
+
+            {districtMega.map(col => (
+              <div>
+                <h3 class="font-semibold mb-3">{col.title}</h3>
+                {col.districts.map(d => (
+                  <a href={`/thi-cong-decal/${d.slug}`} class="block text-sm text-gray-600 hover:text-black">
+                    {d.name}
+                  </a>
+                ))}
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <a href="/du-an">Dự án</a>
+      <a href="/blog">Blog</a>
+      <a href="/lien-he">Liên hệ</a>
+
+    </nav>
+
+    <!-- Mobile Button -->
+    <button onclick="toggleMenu()" class="md:hidden text-xl">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- MOBILE -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 border-t">
+
+    <a href="/" class="block py-2">Trang chủ</a>
+    <a href="/dich-vu" class="block py-2">Dịch vụ</a>
+
+    <button onclick="toggleAccordion('district')" class="w-full flex justify-between py-2">
+      Thi công theo quận
+      <span id="icon-district">+</span>
+    </button>
+
+    <div id="accordion-district" class="hidden pl-4">
+
+      {districtMega.map((col, i) => (
+        <div>
+
+          <button onclick={`toggleAccordion('col-${i}')`} class="w-full flex justify-between py-1 text-sm font-semibold">
+            {col.title}
+            <span id={`icon-col-${i}`}>+</span>
+          </button>
+
+          <div id={`accordion-col-${i}`} class="hidden pl-4">
+
+            {col.districts.map(d => (
+              <a href={`/thi-cong-decal/${d.slug}`} class="block text-sm py-1">
+                {d.name}
+              </a>
+            ))}
+
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+    <a href="/du-an" class="block py-2">Dự án</a>
+    <a href="/blog" class="block py-2">Blog</a>
+    <a href="/lien-he" class="block py-2">Liên hệ</a>
+
+  </div>
+
+</header>
