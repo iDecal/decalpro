@@ -1,59 +1,92 @@
 ---
-import { districtMega } from "../data/districtMega"
+import { districtMega } from "../lib/districtMega"
 ---
 
-<div class="relative group">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
-  <a href="/thi-cong-decal" class="font-medium">
-    Thi công theo quận
-  </a>
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 font-bold text-lg">
+      <img src="/images/logo.png" class="h-8" alt="Decal Pro" />
+      <span>Decal Pro</span>
+    </a>
 
-  <!-- 🌿 Mega Menu -->
-  <div class="absolute left-1/2 -translate-x-1/2 top-full mt-4 hidden group-hover:block w-[900px] bg-white shadow-2xl rounded-2xl p-8">
+    <!-- Menu -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
 
-    <div class="grid grid-cols-3 gap-8">
+      <a href="/">Trang chủ</a>
+      <a href="/dich-vu">Dịch vụ</a>
 
-      {districtMega.map((col) => (
-        <div>
-          <h3 class="font-semibold mb-4 text-gray-900">
-            {col.title}
-          </h3>
+      <!-- 🌿 MEGA MENU -->
+      <div class="relative group">
 
-          <ul class="space-y-2 text-sm">
+        <a href="/thi-cong-decal" class="hover:text-black">
+          Thi công theo quận
+        </a>
 
-            {col.districts.map((d) => (
-              <li>
-                <a
-                  href={`/thi-cong-decal/${d.slug}`}
-                  class="text-gray-600 hover:text-black transition"
-                >
-                  Thi công decal dán kính {d.name}
-                </a>
-              </li>
+        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-4 hidden group-hover:block w-[900px] bg-white shadow-2xl rounded-2xl p-8">
+
+          <div class="grid grid-cols-3 gap-8">
+
+            {districtMega.map((col) => (
+              <div>
+                <h3 class="font-semibold mb-4 text-gray-900">
+                  {col.title}
+                </h3>
+
+                <ul class="space-y-2 text-sm">
+                  {col.districts.map((d) => (
+                    <li>
+                      <a
+                        href={`/thi-cong-decal/${d.slug}`}
+                        class="text-gray-600 hover:text-black transition"
+                      >
+                        Thi công decal dán kính {d.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
 
-          </ul>
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-8 pt-6 border-t flex justify-between items-center">
+            <p class="text-sm text-gray-600">
+              Tư vấn miễn phí tận nơi tại TP.HCM
+            </p>
+
+            <a
+              href="/bao-gia"
+              class="bg-yellow-400 px-5 py-2 rounded-xl font-semibold hover:bg-yellow-300"
+            >
+              Nhận báo giá
+            </a>
+          </div>
+
         </div>
-      ))}
+      </div>
 
-    </div>
+      <a href="/du-an">Dự án thực tế</a>
+      <a href="/blog">Blog</a>
+      <a href="/lien-he">Liên hệ</a>
 
-    <!-- 🌿 CTA trong mega menu -->
-    <div class="mt-8 pt-6 border-t flex items-center justify-between">
+    </nav>
 
-      <p class="text-sm text-gray-600">
-        Tư vấn miễn phí tận nơi tại TP.HCM
-      </p>
+    <!-- CTA -->
+    <div class="hidden md:flex items-center gap-4">
+      <a href="tel:0900000000" class="text-sm">
+        📞 0900 000 000
+      </a>
 
       <a
         href="/bao-gia"
-        class="bg-yellow-400 px-5 py-2 rounded-xl font-semibold hover:bg-yellow-300"
+        class="bg-yellow-400 px-5 py-2 rounded-xl font-semibold"
       >
         Nhận báo giá
       </a>
-
     </div>
 
   </div>
-
-</div>
+</header>
