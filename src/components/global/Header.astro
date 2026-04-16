@@ -1,182 +1,50 @@
----
 const districtMega = [
   {
     title: "Khu trung tâm",
     districts: [
       { name: "Quận 1", slug: "quan-1" },
       { name: "Quận 3", slug: "quan-3" },
-      { name: "Quận 5", slug: "quan-5" }
+      { name: "Quận 4", slug: "quan-4" },
+      { name: "Quận 5", slug: "quan-5" },
+      { name: "Quận 6", slug: "quan-6" },
+      { name: "Quận 8", slug: "quan-8" },
+      { name: "Quận 10", slug: "quan-10" },
+      { name: "Quận 11", slug: "quan-11" }
     ]
   },
   {
     title: "Khu Đông",
     districts: [
-      { name: "Thủ Đức", slug: "thu-duc" },
+      { name: "TP Thủ Đức", slug: "thu-duc" },
+      { name: "Quận 2", slug: "quan-2" },
       { name: "Quận 9", slug: "quan-9" },
-      { name: "Bình Thạnh", slug: "binh-thanh" }
+      { name: "Bình Thạnh", slug: "binh-thanh" },
+      { name: "Phú Nhuận", slug: "phu-nhuan" }
+    ]
+  },
+  {
+    title: "Khu Tây",
+    districts: [
+      { name: "Tân Bình", slug: "tan-binh" },
+      { name: "Tân Phú", slug: "tan-phu" },
+      { name: "Bình Tân", slug: "binh-tan" },
+      { name: "Quận 12", slug: "quan-12" }
     ]
   },
   {
     title: "Khu Nam",
     districts: [
       { name: "Quận 7", slug: "quan-7" },
-      { name: "Nhà Bè", slug: "nha-be" }
+      { name: "Nhà Bè", slug: "nha-be" },
+      { name: "Cần Giờ", slug: "can-gio" }
+    ]
+  },
+  {
+    title: "Ngoại thành",
+    districts: [
+      { name: "Hóc Môn", slug: "hoc-mon" },
+      { name: "Củ Chi", slug: "cu-chi" },
+      { name: "Bình Chánh", slug: "binh-chanh" }
     ]
   }
 ];
----
-
-<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 font-bold text-lg">
-      <img src="/images/logo.png" class="h-8" alt="Decal Pro" />
-      <span>Decal Pro</span>
-    </a>
-
-    <!-- Desktop Menu -->
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-
-      <a href="/">Trang chủ</a>
-      <a href="/dich-vu">Dịch vụ</a>
-
-      <!-- MEGA MENU -->
-      <div class="relative group">
-
-        <a href="/thi-cong-decal" class="hover:text-black">
-          Thi công theo quận
-        </a>
-
-        <!-- Cầu nối hover -->
-        <div class="absolute top-full left-0 w-full h-3"></div>
-
-        <!-- Mega menu -->
-        <div class="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover:block w-[900px] bg-white shadow-2xl rounded-2xl p-8">
-
-          <div class="grid grid-cols-3 gap-8">
-            {districtMega.map((col) => (
-              <div>
-                <h3 class="font-semibold mb-4 text-gray-900">
-                  {col.title}
-                </h3>
-
-                <ul class="space-y-2 text-sm">
-                  {col.districts.map((d) => (
-                    <li>
-                      <a
-                        href={`/thi-cong-decal/${d.slug}`}
-                        class="text-gray-600 hover:text-black"
-                      >
-                        Thi công decal dán kính {d.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-        </div>
-
-      </div>
-
-      <a href="/du-an">Dự án thực tế</a>
-      <a href="/blog">Blog</a>
-      <a href="/lien-he">Liên hệ</a>
-
-    </nav>
-
-    <!-- CTA -->
-    <div class="hidden md:flex items-center gap-4">
-      <a href="tel:0900000000" class="text-sm">📞 0900 000 000</a>
-
-      <a href="/bao-gia" class="bg-yellow-400 px-5 py-2 rounded-xl font-semibold">
-        Nhận báo giá
-      </a>
-    </div>
-
-    <!-- Mobile Button -->
-    <button onclick="toggleMenu()" class="md:hidden flex flex-col gap-1">
-      <span class="w-6 h-0.5 bg-black"></span>
-      <span class="w-6 h-0.5 bg-black"></span>
-      <span class="w-6 h-0.5 bg-black"></span>
-    </button>
-
-  </div>
-
-  <!-- MOBILE MENU -->
-  <div id="mobile-menu" class="md:hidden hidden px-6 pb-6 space-y-4 border-t">
-
-    <a href="/" class="block py-2 font-medium">Trang chủ</a>
-    <a href="/dich-vu" class="block py-2 font-medium">Dịch vụ</a>
-
-    <!-- ACCORDION -->
-    <div>
-
-      <button onclick="toggleAccordion('district')" class="w-full flex justify-between py-2 font-medium">
-        Thi công theo quận
-        <span id="icon-district">+</span>
-      </button>
-
-      <div id="accordion-district" class="hidden pl-4 space-y-3">
-
-        {districtMega.map((col, i) => (
-          <div>
-
-            <button
-              onclick={`toggleAccordion('col-${i}')`}
-              class="w-full flex justify-between text-sm font-semibold"
-            >
-              {col.title}
-              <span id={`icon-col-${i}`}>+</span>
-            </button>
-
-            <div id={`accordion-col-${i}`} class="hidden pl-4 space-y-2 text-gray-600">
-
-              {col.districts.map((d) => (
-                <a href={`/thi-cong-decal/${d.slug}`} class="block">
-                  {d.name}
-                </a>
-              ))}
-
-            </div>
-
-          </div>
-        ))}
-
-      </div>
-
-    </div>
-
-    <a href="/du-an" class="block py-2 font-medium">Dự án thực tế</a>
-    <a href="/blog" class="block py-2 font-medium">Blog</a>
-    <a href="/lien-he" class="block py-2 font-medium">Liên hệ</a>
-
-    <a href="/bao-gia" class="block text-center bg-yellow-400 py-3 rounded-xl font-semibold mt-4">
-      Nhận báo giá
-    </a>
-
-  </div>
-
-</header>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("mobile-menu");
-    menu.classList.toggle("hidden");
-  }
-
-  function toggleAccordion(id) {
-    const el = document.getElementById(`accordion-${id}`);
-    const icon = document.getElementById(`icon-${id}`);
-
-    if (el.classList.contains("hidden")) {
-      el.classList.remove("hidden");
-      if (icon) icon.innerText = "-";
-    } else {
-      el.classList.add("hidden");
-      if (icon) icon.innerText = "+";
-    }
-  }
-</script>
