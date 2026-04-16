@@ -71,7 +71,8 @@ const districtMega = [
 
         <span class="cursor-pointer">Thi công theo quận</span>
 
-        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-4 
+        <div class="absolute left-0 top-full pt-6 hidden group-hover:block">
+  <div class="w-[1000px] bg-white shadow-2xl rounded-xl p-6">
                     opacity-0 invisible group-hover:opacity-100 group-hover:visible 
                     transition duration-200
                     w-[1000px] bg-white shadow-2xl rounded-xl p-6">
@@ -123,7 +124,7 @@ const districtMega = [
     <a href="/dich-vu" class="block py-2">Dịch vụ</a>
 
     <!-- ACCORDION -->
-    <button onclick="toggleAcc('main')" class="w-full flex justify-between py-2">
+    <button data-acc="acc-main">" class="w-full flex justify-between py-2">
       Thi công theo quận
       <span id="icon-main">+</span>
     </button>
@@ -167,20 +168,19 @@ const districtMega = [
 </header>
 
 <script>
-  function toggleMenu() {
-    document.getElementById("mobile-menu").classList.toggle("hidden");
-  }
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
 
-  function toggleAcc(id) {
-    const el = document.getElementById("acc-" + id);
-    const icon = document.getElementById("icon-" + id);
+  btn?.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
 
-    if (!el) return;
+  document.querySelectorAll("[data-acc]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.acc;
+      const el = document.getElementById(id);
 
-    el.classList.toggle("hidden");
-
-    if (icon) {
-      icon.innerText = el.classList.contains("hidden") ? "+" : "-";
-    }
-  }
+      el.classList.toggle("hidden");
+    });
+  });
 </script>
