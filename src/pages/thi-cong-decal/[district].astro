@@ -1,0 +1,116 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const districts = [
+  "quan-1","quan-2","quan-3","quan-4","quan-5","quan-6","quan-7","quan-8",
+  "quan-9","quan-10","quan-11","quan-12",
+  "binh-thanh","phu-nhuan","tan-binh","tan-phu","binh-tan",
+  "thu-duc","hoc-mon","cu-chi","binh-chanh","nha-be","can-gio"
+];
+
+// Tạo đường dẫn tĩnh
+export async function getStaticPaths() {
+  return districts.map((slug) => ({
+    params: { district: slug },
+    props: { slug }
+  }));
+}
+
+const { slug } = Astro.props;
+
+// Format tên hiển thị
+function formatName(slug) {
+  return slug
+    .replace("quan-", "Quận ")
+    .replace("binh-thanh", "Bình Thạnh")
+    .replace("phu-nhuan", "Phú Nhuận")
+    .replace("tan-binh", "Tân Bình")
+    .replace("tan-phu", "Tân Phú")
+    .replace("binh-tan", "Bình Tân")
+    .replace("thu-duc", "TP Thủ Đức")
+    .replace("hoc-mon", "Hóc Môn")
+    .replace("cu-chi", "Củ Chi")
+    .replace("binh-chanh", "Bình Chánh")
+    .replace("nha-be", "Nhà Bè")
+    .replace("can-gio", "Cần Giờ");
+}
+
+const districtName = formatName(slug);
+---
+
+<BaseLayout
+  title={`Thi công decal dán kính ${districtName} | Decal Pro`}
+  description={`Dịch vụ thi công decal dán kính ${districtName} chuyên nghiệp, giá tốt.`}
+>
+
+  <!-- HERO -->
+  <section class="py-20 text-center bg-gray-50">
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-4xl font-bold mb-6">
+        Thi công decal dán kính {districtName}
+      </h1>
+
+      <p class="text-gray-600 mb-8">
+        Không gian tại {districtName} sẽ thay đổi chỉ với một lớp decal —
+        riêng tư hơn, mát hơn và đẹp hơn.
+      </p>
+
+      <a href="/bao-gia" class="bg-yellow-400 px-6 py-3 rounded-xl font-semibold">
+        Nhận báo giá ngay
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-6 space-y-8">
+
+      <h2 class="text-2xl font-semibold">
+        Dịch vụ decal dán kính tại {districtName}
+      </h2>
+
+      <p>
+        Decal Pro cung cấp dịch vụ thi công decal dán kính tại {districtName}
+        cho văn phòng, nhà ở, showroom với độ hoàn thiện cao.
+      </p>
+
+      <ul class="space-y-2">
+        <li>✔ Chống nắng – giảm nhiệt</li>
+        <li>✔ Tăng riêng tư</li>
+        <li>✔ Thi công nhanh trong ngày</li>
+        <li>✔ Bảo hành rõ ràng</li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-6 space-y-6">
+
+      <h2 class="text-2xl font-semibold">
+        Câu hỏi thường gặp tại {districtName}
+      </h2>
+
+      <div>
+        <h3 class="font-semibold">
+          Thi công mất bao lâu?
+        </h3>
+        <p class="text-gray-600">
+          Thường từ 1–3 giờ tùy diện tích.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold">
+          Có bảo hành không?
+        </h3>
+        <p class="text-gray-600">
+          Có, từ 12–36 tháng tùy loại decal.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
