@@ -91,7 +91,36 @@ const faqSchema = {
       </div>
     </div>
   </section>
+---
+// src/pages/index.astro (Tiếp tục từ file trước)
 
+const projects = [
+  {
+    title: "Dán decal mờ văn phòng ngân hàng Vietcombank",
+    location: "Quận 1, TP.HCM",
+    image: "/images/projects/vcb-quan-1.jpg",
+    category: "Văn phòng"
+  },
+  {
+    title: "Chống nắng kính căn hộ Landmark 81",
+    location: "Bình Thạnh, TP.HCM",
+    image: "/images/projects/landmark-81.jpg",
+    category: "Căn hộ"
+  },
+  {
+    title: "Cắt logo decal showroom Toyota",
+    location: "Quận 7, TP.HCM",
+    image: "/images/projects/toyota-q7.jpg",
+    category: "Showroom"
+  },
+  {
+    title: "Trang trí decal tết cho quán Cafe Highlands",
+    location: "Quận 3, TP.HCM",
+    image: "/images/projects/highlands-q3.jpg",
+    category: "Trang trí"
+  }
+];
+---
   <section class="py-16 bg-gray-50 px-6">
     <div class="max-w-7xl mx-auto text-center mb-12">
       <h2 class="text-2xl font-bold">Khu vực chúng tôi có mặt ngay</h2>
