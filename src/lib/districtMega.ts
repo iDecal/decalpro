@@ -1,25 +1,29 @@
 export const districtMega = [
   {
-    group: "Nội thành",
+    group: "TP. Hồ Chí Minh",
     districts: [
-      { 
-        name: "Quận 1", 
-        slug: "quan-1",
-        // Nội dung viết riêng hoàn toàn
-        seoIntro: "Quận 1 là trung tâm tài chính sầm uất nhất TP.HCM, nơi tập trung hàng ngàn văn phòng cao cấp tại các tòa nhà như Bitexco, Landmark, và Vietcombank Tower.",
-        seoDetail: "Tại Quận 1, DecalPro chuyên cung cấp giải pháp decal mờ kẻ chỉ chuyên nghiệp cho phòng họp, cắt dán chữ logo CNC sắc nét trên kính. Chúng tôi am hiểu quy định thi công khắt khe của các tòa nhà hạng A, đảm bảo thi công sạch sẽ, đúng tiến độ.",
-        popularRoads: "Lê Lợi, Nguyễn Huệ, Hàm Nghi, Đồng Khởi, Mạc Đĩnh Chi",
-        serviceType: "Decal Mờ Văn Phòng & Logo Công Ty"
-      },
-      { 
-        name: "Quận 7", 
-        slug: "quan-7",
-        seoIntro: "Với đặc thù nhiều khu đô thị cao cấp như Phú Mỹ Hưng, Him Lam, Quận 7 có nhu cầu rất lớn về chống nắng nóng cho căn hộ chung cư và nhà phố biệt thự.",
-        seoDetail: "Chúng tôi mang đến giải pháp phim cách nhiệt Nano Ceramic chính hãng giúp giảm ngay 7-10 độ C cho căn hộ hướng Tây tại các dự án như Sunrise City, Scenic Valley. Ngoài ra, thợ DecalPro còn chuyên dán decal trang trí cho các shop tại Crescent Mall và SC VivoCity.",
-        popularRoads: "Nguyễn Văn Linh, Nguyễn Thị Thập, Huỳnh Tấn Phát, Lê Văn Lương",
-        serviceType: "Phim Cách Nhiệt Căn Hộ & Decal Shop"
-      }
-      // Các quận khác bạn cứ thêm tương tự vào đây...
+      { name: "Quận 1", slug: "quan-1" },
+      { name: "Quận 3", slug: "quan-3" },
+      { name: "Quận 4", slug: "quan-4" },
+      { name: "Quận 5", slug: "quan-5" },
+      { name: "Quận 6", slug: "quan-6" },
+      { name: "Quận 7", slug: "quan-7" },
+      { name: "Quận 8", slug: "quan-8" },
+      { name: "Quận 10", slug: "quan-10" },
+      { name: "Quận 11", slug: "quan-11" },
+      { name: "Quận 12", slug: "quan-12" },
+      { name: "Quận Tân Bình", slug: "quan-tan-binh" },
+      { name: "Quận Bình Tân", slug: "quan-binh-tan" },
+      { name: "Quận Gò Vấp", slug: "quan-go-vap" },
+      { name: "Quận Phú Nhuận", slug: "quan-phu-nhuan" },
+      { name: "Quận Bình Thạnh", slug: "quan-binh-thanh" },
+      { name: "Quận Tân Phú", slug: "quan-tan-phu" },
+      { name: "Thành phố Thủ Đức", slug: "thanh-pho-thu-duc" },
+      { name: "Huyện Hóc Môn", slug: "huyen-hoc-mon" },
+      { name: "Huyện Củ Chi", slug: "huyen-cu-chi" },
+      { name: "Huyện Nhà Bè", slug: "huyen-nha-be" },
+      { name: "Huyện Bình Chánh", slug: "huyen-binh-chanh" },
+      { name: "Huyện Cần Giờ", slug: "huyen-can-gio" }
     ]
   }
 ];
