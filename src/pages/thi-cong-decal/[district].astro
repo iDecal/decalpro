@@ -1,17 +1,18 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { districtMega } from "../../lib/districtMega";
-
-export async function getStaticPaths() {
-  const allDistricts = districtMega.flatMap(group => group.districts);
-  
-  return allDistricts.map((d) => ({
-    params: { district: d.slug },
-    props: { info: d }, // Truyền cục dữ liệu riêng của quận vào props
-  }));
-}
-
 const { info } = Astro.props;
+
+// Nếu quận đó chưa được soạn nội dung riêng trong districtMega.ts, 
+// ta sẽ dùng nội dung mặc định nhưng vẫn có tên quận để Google không phạt.
+const defaultIntro = `Dịch vụ thi công decal dán kính chuyên nghiệp tại ${info.name}. Chúng tôi cam kết chất lượng, khảo sát tận nơi và thi công nhanh chóng trong ngày.`;
+const defaultDetail = `Tại khu vực ${info.name}, DecalPro cung cấp đầy đủ các giải pháp từ dán kính mờ văn phòng, decal trang trí shop đến phim cách nhiệt chống nóng cho nhà phố và căn hộ. Đội ngũ thợ tay nghề cao, làm việc tận tâm.`;
+const defaultRoads = `các tuyến đường trọng điểm tại ${info.name}`;
+const defaultType = `Decal Dán Kính & Phim Cách Nhiệt`;
+
+// Ưu tiên lấy dữ liệu riêng, nếu không có thì lấy mặc định
+const displayIntro = info.seoIntro || defaultIntro;
+const displayDetail = info.seoDetail || defaultDetail;
+const displayRoads = info.popularRoads || defaultRoads;
+const displayType = info.serviceType || defaultType;
 ---
 
 <BaseLayout 
