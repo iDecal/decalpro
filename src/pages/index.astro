@@ -2,12 +2,44 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { districtMega } from "../lib/districtMega";
 
-// 1. Dữ liệu Dự án đã thi công
+// 1. Dữ liệu Dịch vụ chính (PHẦN MỚI THÊM)
+const mainServices = [
+  {
+    title: "Dán kính văn phòng",
+    desc: "Giải pháp tạo không gian riêng tư, chuyên nghiệp cho doanh nghiệp.",
+    priceNote: "Giá chỉ từ 40.000đ/m²",
+    icon: "🏢",
+    link: "/decal-dan-kinh-van-phong"
+  },
+  {
+    title: "Chống nắng cách nhiệt",
+    desc: "Giảm nhiệt độ phòng, bảo vệ sức khỏe và nội thất khỏi tia UV.",
+    priceNote: "Giá chỉ từ 65.000đ/m²",
+    icon: "☀️",
+    link: "/thi-cong-phim-cach-nhiet"
+  },
+  {
+    title: "Decal quảng cáo",
+    desc: "Thiết kế và thi công cắt dán logo, slogan theo yêu cầu thương hiệu.",
+    priceNote: "Giá chỉ từ 120.000đ/m²",
+    icon: "✂️",
+    link: "/decal-quang-cao"
+  },
+  {
+    title: "Wrap nội thất",
+    desc: "Dán film đổi màu nội thất vân gỗ, vân đá cao cấp cho tủ bếp, bàn ghế.",
+    priceNote: "Giá chỉ từ 250.000đ/m²",
+    icon: "🎨",
+    link: "/wrap-noi-that"
+  }
+];
+
+// 2. Dữ liệu Dự án đã thi công (DỮ LIỆU CŨ CỦA BẠN)
 const projects = [
   {
     title: "Thi công Decal kính FD Care Quận 9 - Vinhomes grandPark",
     location: "KĐT Vinhomes, Quận 9, TP.HCM",
-    image: "/images/decal-dan-kinh-FDcare-quan-9.jpg", // Tên file đã đổi
+    image: "/images/decal-dan-kinh-FDcare-quan-9.jpg",
     category: "Showroom"
   },
   {
@@ -27,34 +59,10 @@ const projects = [
     location: "Quận 3, TP.HCM",
     image: "/images/thi-cong-decal-dan-kinh-quan-tra-sua-half-n-half.jpg",
     category: "Trang trí"
-  },
- {
-    title: "Thi công Decal kính FD Care Quận 9 - Vinhomes grandPark",
-    location: "KĐT Vinhomes, Quận 9, TP.HCM",
-    image: "/images/decal-dan-kinh-FDcare-quan-9.jpg", // Tên file đã đổi
-    category: "Showroom"
-  },
-  {
-    title: "Dán decal mờ văn phòng ngân hàng Vietcombank",
-    location: "Quận 1, TP.HCM",
-    image: "/images/projects/vcb-quan-1.jpg",
-    category: "Văn phòng"
-  },
-  {
-    title: "Chống nắng kính căn hộ Landmark 81",
-    location: "Bình Thạnh, TP.HCM",
-    image: "/images/projects/landmark-81.jpg",
-    category: "Căn hộ"
-  },
-  {
-    title: "Trang trí decal tết cho quán Cafe Highlands",
-    location: "Quận 3, TP.HCM",
-    image: "/images/projects/highlands-q3.jpg",
-    category: "Trang trí"
   }
 ];
 
-// 2. Dữ liệu FAQ chuẩn SEO
+// 3. Dữ liệu FAQ chuẩn SEO (DỮ LIỆU CŨ CỦA BẠN)
 const faqs = [
   {
     q: "Giá thi công dán kính tính theo m2 hay theo tấm?",
@@ -70,7 +78,6 @@ const faqs = [
   }
 ];
 
-// 3. Schema SEO FAQ
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -113,14 +120,35 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="py-20 bg-gray-50 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center md:text-left mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Dự án tiêu biểu</h2>
-        <p class="text-gray-600 italic">"Sắc nét từng đường cắt - Bền bỉ theo thời gian"</p>
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">DỊCH VỤ <span class="text-yellow-500">TRỌNG TÂM</span></h2>
+        <div class="w-20 h-1.5 bg-yellow-500 mx-auto rounded-full"></div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {mainServices.map((service) => (
+          <a href={service.link} class="group bg-slate-50 p-8 rounded-[2rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-yellow-500/10 transition-all duration-500 flex flex-col">
+            <div class="text-5xl mb-6 group-hover:scale-110 transition-transform">{service.icon}</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-yellow-600 transition">{service.title}</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">{service.desc}</p>
+            <div class="pt-5 border-t border-slate-200">
+              <span class="block text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Chi phí từ</span>
+              <span class="text-lg font-black text-slate-900">{service.priceNote}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-50 px-6">
+    <div class="max-w-7xl mx-auto text-center md:text-left mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Dự án tiêu biểu</h2>
+        <p class="text-gray-600 italic">"Sắc nét từng đường cắt - Bền bỉ theo thời gian"</p>
+    </div>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {projects.map((project) => (
           <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
             <div class="relative overflow-hidden aspect-[4/3]">
@@ -133,7 +161,6 @@ const faqSchema = {
             </div>
           </div>
         ))}
-      </div>
     </div>
   </section>
 
