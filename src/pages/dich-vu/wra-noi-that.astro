@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Dữ liệu các dòng Film Wrap nội thất
+const wrapTypes = [
+  {
+    title: "Wrap vân gỗ (Wood Grain)",
+    desc: "Tái tạo bề mặt gỗ tự nhiên cho tủ bếp, cửa phòng, bàn làm việc với độ chân thực 99%.",
+    icon: "🪵"
+  },
+  {
+    title: "Wrap vân đá (Marble/Stone)",
+    desc: "Biến mặt bàn, kệ tivi thành đá cẩm thạch sang trọng mà không cần thay mới mặt đá thật.",
+    icon: "💎"
+  },
+  {
+    title: "Wrap kim loại & Màu đơn sắc",
+    desc: "Phù hợp cho không gian hiện đại, các bề mặt tủ lạnh, thiết bị điện tử hoặc khung nhôm.",
+    icon: "✨"
+  }
+];
+
+const faqs = [
+  {
+    q: "Wrap nội thất có bền bằng sơn không?",
+    a: "Film Wrap nội thất (Architectural Film) có độ bền từ 5-10 năm, chống trầy xước tốt hơn sơn và không để lại mùi hóa chất độc hại."
+  },
+  {
+    q: "Bề mặt nào có thể dán Wrap được?",
+    a: "Tất cả các bề mặt phẳng hoặc cong nhẹ như gỗ công nghiệp (MDF), nhựa, nhôm, kính, kim loại đều có thể thi công Wrap."
+  }
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Dịch vụ Wrap nội thất chuyên nghiệp",
+  "description": "Dán film đổi màu nội thất, vân gỗ, vân đá cho tủ bếp, bàn ghế, cửa gỗ tại TP.HCM.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "DecalPro"
+  }
+};
+---
+
+<BaseLayout 
+  title="Wrap Nội Thất - Dán Film Đổi Màu Tủ Bếp, Cửa Gỗ, Bàn Ghế TP.HCM"
+  description="Dịch vụ dán film nội thất cao cấp. Thay đổi màu sắc không gian sống nhanh chóng, không bụi bẩn, không mùi sơn. Bảo hành 5 năm."
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <section class="relative py-24 bg-slate-50 overflow-hidden px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+          Làm Mới Nội Thất <br/> <span class="text-yellow-600">Không Cần Thay Thế</span>
+        </h1>
+        <p class="text-lg text-slate-600 mb-8">
+          Sử dụng Film dán nội thất chuyên dụng để đổi màu tủ bếp, cửa gỗ, bàn ghế... Thi công nhanh chóng trong ngày, tiết kiệm 70% chi phí so với mua mới.
+        </p>
+        <div class="flex gap-4">
+          <a href="tel:0862208108" class="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-black transition shadow-lg">Liên hệ tư vấn: 0862 208 108</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-4 bg-yellow-400/20 rounded-full blur-3xl"></div>
+        <img src="/images/projects/mau-decal-mo-cat-cnc.jpg" alt="Wrap nội thất cao cấp" class="relative rounded-2xl shadow-2xl border-4 border-white" />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">Tại sao nên chọn Film Wrap nội thất?</h2>
+        <p class="text-gray-500">Giải pháp tối ưu cho việc tân trang không gian sống hiện đại</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {wrapTypes.map(item => (
+          <div class="p-8 bg-slate-50 rounded-3xl border border-transparent hover:border-yellow-500 transition-all group">
+            <div class="text-5xl mb-6 group-hover:scale-110 transition-transform">{item.icon}</div>
+            <h3 class="text-xl font-bold mb-4">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-900 text-white px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-12">Tiêu chuẩn thi công từ 3S Wrap</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="border border-slate-700 p-6 rounded-xl">
+          <div class="text-yellow-400 font-bold text-2xl mb-2">Sạch sẽ</div>
+          <p class="text-slate-400 text-sm">Không bụi bẩn, không mùi hóa chất, thi công xong ở được ngay.</p>
+        </div>
+        <div class="border border-slate-700 p-6 rounded-xl">
+          <div class="text-yellow-400 font-bold text-2xl mb-2">Sắc nét</div>
+          <p class="text-slate-400 text-sm">Xử lý các góc cạnh, bo góc tỉ mỉ như nội thất nguyên bản.</p>
+        </div>
+        <div class="border border-slate-700 p-6 rounded-xl">
+          <div class="text-yellow-400 font-bold text-2xl mb-2">Siêu bền</div>
+          <p class="text-slate-400 text-sm">Chống nước, chống cháy nhẹ và bảo hành lên đến 5 năm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Câu hỏi thường gặp</h2>
+      <div class="space-y-6">
+        {faqs.map(faq => (
+          <div class="border-b pb-6">
+            <h4 class="font-bold text-lg mb-2 text-slate-800 italic">" {faq.q} "</h4>
+            <p class="text-gray-600 pl-4">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-yellow-500 py-16 text-center px-6">
+    <h2 class="text-3xl font-extrabold mb-6">Bạn muốn thay đổi diện mạo cho ngôi nhà?</h2>
+    <p class="text-lg mb-8 font-medium">Gửi ngay hình ảnh mặt bằng qua Zalo để nhận báo giá dự toán sau 5 phút!</p>
+    <a href="tel:0862208108" class="bg-slate-900 text-white px-10 py-4 rounded-full font-bold text-xl inline-block hover:scale-105 transition shadow-2xl">
+        Zalo Báo Giá: 0862 208 108
+    </a>
+  </section>
+</BaseLayout>
