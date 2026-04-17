@@ -2,98 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { districtMega } from "../lib/districtMega";
 
-// Dữ liệu FAQ chuẩn SEO
-const faqs = [
-  {
-    q: "Giá thi công dán kính tính theo m2 hay theo tấm?",
-    a: "Thông thường, chi phí sẽ được tính theo m2 hoàn thiện (bao gồm vật tư và công thợ). Tuy nhiên, với các diện tích nhỏ dưới 5m2, chúng tôi sẽ áp dụng mức giá trọn gói để tối ưu chi phí cho khách hàng."
-  },
-  {
-    q: "Thời gian bảo hành thi công là bao lâu?",
-    a: "Tất cả các công trình do chúng tôi thực hiện đều được bảo hành từ 2 - 5 năm đối với lỗi kỹ thuật như bong tróc, nổi bong bóng khí hoặc bay màu vật liệu."
-  },
-  {
-    q: "Sau khi liên hệ bao lâu thì thợ có mặt khảo sát?",
-    a: "Tại khu vực TP.HCM, đội ngũ kỹ thuật của chúng tôi sẽ có mặt trong vòng 30 - 60 phút sau khi tiếp nhận yêu cầu để đo đạc và tư vấn mẫu trực tiếp."
-  },
-  {
-    q: "Có thi công dán kính vào ngày lễ hoặc ngoài giờ hành chính không?",
-    a: "Có. Chúng tôi hỗ trợ thi công 24/7, kể cả buổi đêm cho các văn phòng/showroom trong trung tâm thương mại để không ảnh hưởng đến hoạt động kinh doanh của quý khách."
-  }
-];
-
-// Tạo cấu trúc dữ liệu JSON-LD cho FAQ để hiển thị trên Google
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(item => ({
-    "@type": "Question",
-    "name": item.q,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": item.a
-    }
-  }))
-};
----
-
-<BaseLayout 
-  title="Thi Công Decal Dán Kính Chuyên Nghiệp TP.HCM - Khảo Sát Tận Nơi"
-  description="Dịch vụ thi công decal dán kính văn phòng, decal chống nắng, trang trí kính tại TP.HCM. Thợ tay nghề cao, thi công nhanh, bảo hành 2 năm."
->
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
-
-  <section class="relative bg-slate-900 py-24 px-6 overflow-hidden">
-    <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
-      <div class="flex-1 text-center md:text-left text-white">
-        <span class="bg-yellow-500 text-black px-4 py-1 rounded-full text-sm font-bold uppercase mb-4 inline-block">Uy tín số 1 TP.HCM</span>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-          Giải Pháp Dán Kính <br/> <span class="text-yellow-400">Chuyên Nghiệp</span> Toàn Diện
-        </h1>
-        <p class="text-lg text-slate-300 mb-8 max-w-xl">
-          Từ văn phòng sang trọng đến căn hộ ấm cúng. Chúng tôi biến những tấm kính đơn điệu thành tác phẩm nghệ thuật và lá chắn chống nóng hiệu quả.
-        </p>
-        <div class="flex flex-wrap justify-center md:justify-start gap-4">
-          <a href="tel:0909000000" class="bg-yellow-500 text-black px-8 py-4 rounded-lg font-bold text-lg hover:scale-105 transition shadow-lg">
-            Báo giá ngay: 0909 000 000
-          </a>
-          <a href="#dich-vu" class="bg-white/10 backdrop-blur text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition">
-            Xem mẫu thực tế
-          </a>
-        </div>
-      </div>
-      <div class="flex-1 w-full">
-        <div class="relative">
-             <div class="absolute -inset-4 bg-yellow-500/20 blur-3xl rounded-full"></div>
-             <img src="/images/hero-decal.jpg" alt="Thi công decal dán kính" class="rounded-2xl shadow-2xl relative border-4 border-white/10" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="dich-vu" class="py-20 px-6 bg-white">
-    <div class="max-w-7xl mx-auto text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Dịch vụ thế mạnh của chúng tôi</h2>
-      <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-      <div class="p-8 border rounded-2xl hover:border-yellow-500 transition-all group">
-        <h3 class="text-xl font-bold mb-4 group-hover:text-yellow-600">Dán kính Văn Phòng</h3>
-        <p class="text-gray-600">Decal mờ, cắt logo, tạo không gian riêng tư và chuyên nghiệp cho phòng làm việc, phòng họp.</p>
-      </div>
-      <div class="p-8 border rounded-2xl hover:border-yellow-500 transition-all group">
-        <h3 class="text-xl font-bold mb-4 group-hover:text-yellow-600">Dán kính Chống Nắng</h3>
-        <p class="text-gray-600">Phim cách nhiệt cao cấp, giảm nhiệt tới 80%, ngăn tia UV bảo vệ sức khỏe và nội thất.</p>
-      </div>
-      <div class="p-8 border rounded-2xl hover:border-yellow-500 transition-all group">
-        <h3 class="text-xl font-bold mb-4 group-hover:text-yellow-600">Decal Trang Trí</h3>
-        <p class="text-gray-600">In decal theo thiết kế, hoa văn nghệ thuật cho nhà ở, quán cafe, shop thời trang.</p>
-      </div>
-    </div>
-  </section>
----
-// src/pages/index.astro (Tiếp tục từ file trước)
-
+// 1. Dữ liệu Dự án đã thi công
 const projects = [
   {
     title: "Dán decal mờ văn phòng ngân hàng Vietcombank",
@@ -120,44 +29,145 @@ const projects = [
     category: "Trang trí"
   }
 ];
+
+// 2. Dữ liệu FAQ chuẩn SEO
+const faqs = [
+  {
+    q: "Giá thi công dán kính tính theo m2 hay theo tấm?",
+    a: "Thông thường, chi phí sẽ được tính theo m2 hoàn thiện (bao gồm vật tư và công thợ). Với diện tích nhỏ dưới 5m2, chúng tôi áp dụng mức giá trọn gói để tối ưu nhất cho khách hàng."
+  },
+  {
+    q: "Thời gian bảo hành thi công là bao lâu?",
+    a: "Tất cả công trình đều được bảo hành từ 2 - 5 năm đối với các lỗi kỹ thuật như bong tróc hay nổi bọt khí."
+  },
+  {
+    q: "Thợ có mặt khảo sát sau bao lâu?",
+    a: "Tại nội thành TP.HCM, đội ngũ kỹ thuật sẽ có mặt trong vòng 30 - 60 phút để đo đạc và tư vấn mẫu trực tiếp."
+  }
+];
+
+// 3. Schema SEO FAQ
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+};
 ---
-  <section class="py-16 bg-gray-50 px-6">
-    <div class="max-w-7xl mx-auto text-center mb-12">
-      <h2 class="text-2xl font-bold">Khu vực chúng tôi có mặt ngay</h2>
-    </div>
-    <div class="flex flex-wrap justify-center gap-3">
-        {districtMega.flatMap(g => g.districts).map(d => (
-            <a href={`/thi-cong-decal/${d.slug}`} class="bg-white border px-4 py-2 rounded-full text-sm hover:bg-yellow-500 hover:border-yellow-500 transition">
-                {d.name}
-            </a>
-        ))}
+
+<BaseLayout 
+  title="Thi Công Decal Dán Kính Chuyên Nghiệp TP.HCM - Khảo Sát Tận Nơi"
+  description="Dịch vụ thi công decal dán kính văn phòng, decal mờ, phim cách nhiệt tại TP.HCM. Thợ tay nghề cao, thi công nhanh, bảo hành 2 năm."
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+
+  <section class="relative bg-slate-900 py-20 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1 text-center md:text-left text-white">
+        <span class="bg-yellow-500 text-black px-4 py-1 rounded-full text-sm font-bold uppercase mb-4 inline-block">Uy tín số 1 TP.HCM</span>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+          Giải Pháp Dán Kính <br/> <span class="text-yellow-400">Chuyên Nghiệp</span> Toàn Diện
+        </h1>
+        <p class="text-lg text-slate-300 mb-8 max-w-xl">
+          Đội ngũ chuyên thi công decal văn phòng, chống nắng căn hộ và trang trí showroom. Khảo sát tận nhà, thi công trong ngày.
+        </p>
+        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+          <a href="tel:0909000000" class="bg-yellow-500 text-black px-8 py-4 rounded-lg font-bold text-lg hover:scale-105 transition shadow-lg">
+            📞 Hotline: 0909 000 000
+          </a>
+        </div>
+      </div>
+      <div class="flex-1 w-full">
+        <img src="/images/hero-decal.jpg" alt="Thi công decal dán kính" class="rounded-2xl shadow-2xl border-4 border-white/10" />
+      </div>
     </div>
   </section>
 
-  <section class="py-20 px-6 bg-white">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Câu hỏi thường gặp (FAQ)</h2>
-      <div class="space-y-6">
-        {faqs.map(item => (
-          <div class="border-b pb-6">
-            <h3 class="text-lg font-bold mb-3 flex items-start gap-3">
-              <span class="text-yellow-600">Q:</span> {item.q}
-            </h3>
-            <p class="text-gray-600 flex items-start gap-3 pl-2">
-               {item.a}
-            </p>
+  <section id="dich-vu" class="py-20 px-6 bg-white">
+    <div class="max-w-7xl mx-auto text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Dịch vụ thế mạnh</h2>
+      <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div class="p-8 border rounded-2xl hover:border-yellow-500 transition-all">
+        <h3 class="text-xl font-bold mb-4 text-slate-800">Dán kính Văn Phòng</h3>
+        <p class="text-gray-600">Decal mờ, cắt chữ logo, tạo không gian riêng tư và chuyên nghiệp.</p>
+      </div>
+      <div class="p-8 border rounded-2xl hover:border-yellow-500 transition-all">
+        <h3 class="text-xl font-bold mb-4 text-slate-800">Dán kính Chống Nắng</h3>
+        <p class="text-gray-600">Phim cách nhiệt cao cấp, giảm nhiệt 80%, bảo vệ nội thất căn hộ.</p>
+      </div>
+      <div class="p-8 border rounded-2xl hover:border-yellow-500 transition-all">
+        <h3 class="text-xl font-bold mb-4 text-slate-800">Decal Trang Trí</h3>
+        <p class="text-gray-600">In decal theo yêu cầu, dán kính mờ nghệ thuật cho shop, cafe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-50 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center md:text-left mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Dự án tiêu biểu</h2>
+        <p class="text-gray-600 italic">"Sắc nét từng đường cắt - Bền bỉ theo thời gian"</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {projects.map((project) => (
+          <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+            <div class="relative overflow-hidden aspect-[4/3]">
+              <img src={project.image} alt={project.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+              <span class="absolute top-3 left-3 bg-black/60 text-white text-[10px] px-2 py-1 rounded-full">{project.category}</span>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-md mb-2 line-clamp-2">{project.title}</h3>
+              <p class="text-gray-500 text-xs flex items-center gap-1">📍 {project.location}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="bg-yellow-500 py-16 text-center px-6">
-    <h2 class="text-3xl font-bold mb-6 text-black text-center">Sẵn sàng nâng tầm không gian của bạn?</h2>
-    <p class="text-black/80 mb-8 max-w-2xl mx-auto">Đừng để những tấm kính làm nóng văn phòng hay làm phiền sự riêng tư của bạn. Liên hệ ngay để nhận mẫu thử miễn phí.</p>
-    <a href="tel:0909000000" class="bg-black text-white px-10 py-4 rounded-full font-bold text-xl inline-block hover:scale-105 transition">
-        📞 Hotline: 0909 000 000
-    </a>
+  <section class="py-16 bg-white px-6">
+    <div class="max-w-7xl mx-auto text-center mb-10">
+      <h2 class="text-2xl font-bold">Khu vực phục vụ 24/7</h2>
+    </div>
+    <div class="flex flex-wrap justify-center gap-2 max-w-5xl mx-auto">
+      {districtMega.flatMap(g => g.districts).map(d => (
+        <a href={`/thi-cong-decal/${d.slug}`} class="bg-gray-100 px-4 py-2 rounded-lg text-sm hover:bg-yellow-400 transition font-medium">
+          {d.name}
+        </a>
+      ))}
+    </div>
   </section>
 
+  <section class="py-20 px-6 bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Hỏi đáp dịch vụ</h2>
+      <div class="space-y-6">
+        {faqs.map(item => (
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-lg font-bold mb-2 flex gap-2">
+              <span class="text-yellow-600">Q:</span> {item.q}
+            </h3>
+            <p class="text-gray-600 pl-6 border-l-2 border-yellow-500 ml-2">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-yellow-400 py-16 text-center px-6">
+    <h2 class="text-3xl font-bold mb-4">Bạn cần tư vấn mẫu ngay tại nhà?</h2>
+    <p class="mb-8 font-medium">Khảo sát đo đạc miễn phí - Báo giá không phát sinh</p>
+    <a href="tel:0862208108" class="bg-black text-white px-10 py-4 rounded-full font-bold text-xl inline-block hover:scale-110 transition">
+        Liên hệ ngay: 0862-208-108
+    </a>
+  </section>
 </BaseLayout>
