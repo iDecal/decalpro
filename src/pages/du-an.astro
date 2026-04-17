@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Dữ liệu danh mục dự án để khách dễ lọc
+const categories = ["Tất cả", "Văn phòng", "Căn hộ", "Showroom", "Wrap nội thất"];
+
+// Dữ liệu các dự án tiêu biểu
+const projects = [
+  {
+    title: "Vách kính văn phòng LMP Sala",
+    category: "Văn phòng",
+    client: "LMP Group",
+    location: "KĐT Sala, Quận 2",
+    image: "/images/projects/decal-mo-van-phong.jpg", // Thay bằng ảnh thực tế của bạn
+    description: "Thi công hơn 200m2 decal mờ kẻ chỉ nghệ thuật và cắt logo nhận diện thương hiệu tại quầy lễ tân."
+  },
+  {
+    title: "Phim cách nhiệt căn hộ Landmark 81",
+    category: "Căn hộ",
+    client: "Chị Lan Anh",
+    location: "Bình Thạnh, TP.HCM",
+    image: "/images/projects/phim-cach-nhiet.jpg",
+    description: "Giải pháp dán phim Nano Ceramic cao cấp, giảm 7 độ C cho phòng khách hướng Tây, giữ view trong suốt."
+  },
+  {
+    title: "Wrap đổi màu tủ bếp biệt thự Thảo Điền",
+    category: "Wrap nội thất",
+    client: "Anh Philip",
+    location: "Quận 2, TP.HCM",
+    image: "/images/projects/wrap-noi-that.jpg",
+    description: "Cải tạo hệ thống tủ bếp cũ từ màu gỗ sồi sang màu xám Slate hiện đại bằng Film chuyên dụng."
+  },
+  {
+    title: "Decal quảng cáo Showroom Vietcombank",
+    category: "Showroom",
+    client: "Vietcombank",
+    location: "Quận 1, TP.HCM",
+    image: "/images/projects/decal-quang-cao.jpg",
+    description: "Thi công decal lưới quảng cáo mặt tiền và dán an toàn cho hệ thống cửa kính sảnh chờ."
+  }
+];
+
+const stats = [
+    { label: "Dự án hoàn thành", value: "1,500+" },
+    { label: "Khách hàng hài lòng", value: "98%" },
+    { label: "Năm kinh nghiệm", value: "8+" },
+    { label: "Nhân sự kỹ thuật", value: "15+" }
+];
+---
+
+<BaseLayout 
+  title="Dự Án Thực Tế - Portfolio Thi Công Decal Chuyên Nghiệp | DecalPro"
+  description="Khám phá các công trình dán decal mờ văn phòng, phim cách nhiệt nhà kính và wrap nội thất tiêu biểu đã được DecalPro thực hiện tại TP.HCM."
+>
+  <section class="bg-slate-900 py-24 text-center text-white px-6">
+    <span class="text-yellow-500 font-bold uppercase tracking-widest text-sm">Portfolio</span>
+    <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6">Dự Án Đã Thi Công</h1>
+    <p class="max-w-2xl mx-auto text-slate-400 text-lg">
+      Hơn 1.000+ công trình lớn nhỏ tại TP.HCM và các tỉnh lân cận là minh chứng rõ nhất cho chất lượng dịch vụ của chúng tôi.
+    </p>
+  </section>
+
+  <section class="bg-yellow-500 py-10">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {stats.map(stat => (
+                <div>
+                    <div class="text-3xl md:text-4xl font-black text-slate-900">{stat.value}</div>
+                    <div class="text-slate-800 text-sm font-medium">{stat.label}</div>
+                </div>
+            ))}
+        </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap justify-center gap-4 mb-16">
+        {categories.map(cat => (
+          <button class="px-6 py-2 rounded-full border border-slate-200 hover:bg-slate-900 hover:text-white transition font-medium">
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10">
+        {projects.map(project => (
+          <div class="group cursor-pointer">
+            <div class="relative overflow-hidden rounded-3xl mb-6">
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                class="w-full h-[350px] object-cover transition duration-500 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                <p class="text-white text-sm">{project.description}</p>
+              </div>
+              <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold text-slate-900 uppercase">
+                {project.category}
+              </span>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 group-hover:text-yellow-600 transition">{project.title}</h3>
+            <div class="flex items-center gap-4 mt-2 text-gray-500 text-sm">
+                <span>📍 {project.location}</span>
+                <span>👤 Khách hàng: {project.client}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-16">Quy trình triển khai dự án chuyên nghiệp</h2>
+        <div class="grid md:grid-cols-3 gap-12 relative">
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
+                <h4 class="font-bold mb-2">Khảo sát & Tư vấn</h4>
+                <p class="text-sm text-gray-600">Đến tận nơi đo đạc, xem mặt bằng và tư vấn mẫu vật liệu phù hợp nhất.</p>
+            </div>
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
+                <h4 class="font-bold mb-2">Thiết kế & Báo giá</h4>
+                <p class="text-sm text-gray-600">Lên demo thiết kế (nếu cần) và gửi báo giá trọn gói không phát sinh.</p>
+            </div>
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
+                <h4 class="font-bold mb-2">Thi công & Bàn giao</h4>
+                <p class="text-sm text-gray-600">Đội ngũ thợ tay nghề cao lắp đặt nhanh chóng, vệ sinh sạch sẽ và nghiệm thu.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="py-20 text-center px-6">
+    <h2 class="text-3xl font-bold mb-6">Bạn có dự án cần triển khai?</h2>
+    <p class="text-gray-600 mb-10">Hãy để chúng tôi giúp bạn kiến tạo không gian làm việc chuyên nghiệp nhất.</p>
+    <div class="flex justify-center gap-4">
+        <a href="https://zalo.me/0862208108" class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition">Gửi ảnh qua Zalo tư vấn</a>
+        <a href="/bao-gia-thi-cong-decal" class="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-black transition">Xem bảng báo giá</a>
+    </div>
+  </section>
+</BaseLayout>
