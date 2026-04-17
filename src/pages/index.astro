@@ -113,23 +113,71 @@ const faqSchema = {
     </div>
   </section>
 
-  <section id="dich-vu" class="py-20 px-6 bg-white">
-    <div class="max-w-7xl mx-auto text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Dịch vụ thế mạnh</h2>
-      <div class="w-20 h-1 bg-yellow-500 mx-auto"></div>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-      <div class="p-8 border rounded-2xl hover:border-yellow-500 transition-all">
-        <h3 class="text-xl font-bold mb-4 text-slate-800">Dán kính Văn Phòng</h3>
-        <p class="text-gray-600">Decal mờ, cắt chữ logo, tạo không gian riêng tư và chuyên nghiệp.</p>
+ ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Mảng dịch vụ của bạn
+const mainServices = [
+  {
+    title: "Dán kính văn phòng",
+    desc: "Giải pháp tạo không gian riêng tư, chuyên nghiệp cho doanh nghiệp.",
+    icon: "🏢",
+    link: "/decal-dan-kinh-van-phong" // Đã chỉnh lại link cho khớp với cấu trúc file của bạn
+  },
+  {
+    title: "Chống nắng cách nhiệt",
+    desc: "Giảm nhiệt độ phòng, bảo vệ sức khỏe và nội thất khỏi tia UV.",
+    icon: "☀️",
+    link: "/thi-cong-phim-cach-nhiet"
+  },
+  {
+    title: "Decal quảng cáo",
+    desc: "Thiết kế và thi công cắt dán logo, slogan theo yêu cầu.",
+    icon: "✂️",
+    link: "/decal-quang-cao"
+  },
+  {
+    title: "Wrap nội thất",
+    desc: "Dán film đổi màu nội thất, vân gỗ, vân đá cho tủ bếp, bàn ghế, cửa gỗ tại TP.HCM",
+    icon: "🎨",
+    link: "/wrap-noi-that"
+  }
+];
+
+// Dữ liệu bảng giá (Giữ nguyên hoặc cập nhật từ code cũ của bạn)
+const pricingSections = [ /* ... mảng pricingSections 4 mục ... */ ];
+---
+
+<BaseLayout title="Báo Giá & Dịch Vụ - DecalPro">
+  
+  <section class="py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Khám phá chi tiết dịch vụ</h2>
+        <p class="text-slate-500">Bấm vào từng mục để xem quy trình thi công và hình ảnh thực tế</p>
       </div>
-      <div class="p-8 border rounded-2xl hover:border-yellow-500 transition-all">
-        <h3 class="text-xl font-bold mb-4 text-slate-800">Dán kính Chống Nắng</h3>
-        <p class="text-gray-600">Phim cách nhiệt cao cấp, giảm nhiệt 80%, bảo vệ nội thất căn hộ.</p>
-      </div>
-      <div class="p-8 border rounded-2xl hover:border-yellow-500 transition-all">
-        <h3 class="text-xl font-bold mb-4 text-slate-800">Decal Trang Trí</h3>
-        <p class="text-gray-600">In decal theo yêu cầu, dán kính mờ nghệ thuật cho shop, cafe.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {mainServices.map((service) => (
+          <a href={service.link} class="group bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-yellow-500/5 rounded-bl-full translate-x-10 -translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-all"></div>
+            
+            <div class="text-5xl mb-6 inline-block">{service.icon}</div>
+            
+            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-yellow-600 transition">
+              {service.title}
+            </h3>
+            
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              {service.desc}
+            </p>
+
+            <div class="flex items-center text-sm font-bold text-slate-900 gap-2">
+              Xem chi tiết 
+              <span class="group-hover:translate-x-2 transition-transform">→</span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
