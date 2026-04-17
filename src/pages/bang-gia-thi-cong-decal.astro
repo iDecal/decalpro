@@ -1,133 +1,153 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// Dữ liệu bảng giá
-const pricingData = [
+// Dữ liệu bảng giá chi tiết
+const pricingSections = [
   {
-    category: "Decal Văn Phòng",
+    title: "Báo Giá Decal Mờ Văn Phòng",
+    description: "Giải pháp hàng đầu cho vách kính phòng họp, phòng làm việc nhân viên.",
     items: [
-      { name: "Decal mờ (trơn)", price: "40.000đ - 60.000đ", unit: "m2" },
-      { name: "Decal mờ kẻ chỉ nghệ thuật", price: "80.000đ - 120.000đ", unit: "m2" },
-      { name: "Cắt chữ, Logo CNC (dưới 1m2)", price: "150.000đ - 350.000đ", unit: "bộ" },
-      { name: "In UV trên decal mờ", price: "180.000đ - 250.000đ", unit: "m2" }
-    ]
+      { name: "Decal mờ dán trơn (Standard)", price: "40.000 - 60.000", unit: "m2" },
+      { name: "Decal mờ kẻ chỉ thủ công", price: "80.000 - 110.000", unit: "m2" },
+      { name: "Cắt chữ/Logo decal mờ CNC", price: "120.000 - 350.000", unit: "bộ" },
+      { name: "In UV màu trên nền decal mờ", price: "180.000 - 280.000", unit: "m2" }
+    ],
+    image: "/images/projects/decal-mo-van-phong.jpg" // Đảm bảo có ảnh này
   },
   {
-    category: "Phim Cách Nhiệt & Chống Nắng",
+    title: "Báo Giá Phim Cách Nhiệt - Chống Nắng",
+    description: "Ngăn tia UV, giảm nhiệt độ phòng và tiết kiệm điện năng cho điều hòa.",
     items: [
-      { name: "Decal phản quang (Silver)", price: "65.000đ - 85.000đ", unit: "m2" },
-      { name: "Phim cách nhiệt Đài Loan", price: "120.000đ - 180.000đ", unit: "m2" },
-      { name: "Phim Nano Ceramic (Hàn Quốc)", price: "250.000đ - 450.000đ", unit: "m2" },
-      { name: "Phim bảo vệ kính (Safety Film)", price: "150.000đ - 300.000đ", unit: "m2" }
-    ]
+      { name: "Decal phản quang (Silver)", price: "60.000 - 90.000", unit: "m2" },
+      { name: "Phim cách nhiệt Nano Ceramic (Hàn Quốc)", price: "250.000 - 450.000", unit: "m2" },
+      { name: "Phim cách nhiệt 3M chính hãng", price: "550.000 - 1.200.000", unit: "m2" },
+      { name: "Phim an toàn (Safety Film) chống vỡ kính", price: "180.000 - 320.000", unit: "m2" }
+    ],
+    image: "/images/projects/phim-cach-nhiet.jpg"
   },
   {
-    category: "Wrap Nội Thất & Decal Cao Cấp",
+    title: "Dịch Vụ Wrap & Decal Quảng Cáo",
+    description: "Tân trang nội thất và quảng bá thương hiệu mặt tiền Showroom.",
     items: [
-      { name: "Wrap vân gỗ / vân đá", price: "250.000đ - 550.000đ", unit: "m2" },
-      { name: "Decal 3D sóng (Wave Decal)", price: "Liên hệ khảo sát", unit: "m2" },
-      { name: "Decal lưới / Decal trong in UV", price: "150.000đ - 220.000đ", unit: "m2" }
-    ]
+      { name: "Wrap film nội thất (Vân gỗ, vân đá)", price: "250.000 - 600.000", unit: "m2" },
+      { name: "Decal lưới (One-way Vision) in quảng cáo", price: "150.000 - 220.000", unit: "m2" },
+      { name: "Tháo gỡ decal cũ & vệ sinh keo", price: "20.000 - 45.000", unit: "m2" }
+    ],
+    image: "/images/projects/wrap-noi-that.jpg"
   }
 ];
 
-const faqs = [
-  {
-    q: "Giá trên đã bao gồm công thi công chưa?",
-    a: "Bảng giá trên thường là giá vật tư. Công thi công sẽ dao động từ 15.000đ - 35.000đ/m2 tùy vào độ khó của địa hình và tổng diện tích."
-  },
-  {
-    q: "Diện tích bao nhiêu thì được giảm giá?",
-    a: "Với các đơn hàng trên 50m2, DecalPro luôn có chính sách chiết khấu từ 10-15% hoặc miễn phí hoàn toàn công thi công."
-  },
-  {
-    q: "Phí khảo sát tận nơi là bao nhiêu?",
-    a: "Chúng tôi hỗ trợ khảo sát, đo đạc và mang mẫu thực tế tận nơi MIỄN PHÍ hoàn toàn tại khu vực TP.HCM."
-  },
-  {
-    q: "Có xuất hóa đơn VAT không?",
-    a: "Có. Chúng tôi hỗ trợ xuất hóa đơn tài chính đầy đủ cho các đơn vị doanh nghiệp khi có yêu cầu."
-  }
+const checklistSEO = [
+    "Khảo sát đo đạc mặt bằng miễn phí 100%.",
+    "Đội ngũ kỹ thuật viên hơn 5 năm kinh nghiệm.",
+    "Sử dụng vật liệu chính hãng, độ bền trên 5 năm.",
+    "Thi công sạch sẽ, nhanh chóng, kể cả ngoài giờ hành chính.",
+    "Có đầy đủ hóa đơn VAT cho doanh nghiệp."
 ];
 ---
 
 <BaseLayout 
-  title="Bảng Giá Thi Công Decal & Phim Cách Nhiệt Mới Nhất 2026"
-  description="Cập nhật bảng giá dán decal kính mờ văn phòng, phim cách nhiệt nhà kính, wrap nội thất tại TP.HCM. Giá tốt tận xưởng, thi công nhanh."
+  title="Báo Giá Thi Công Decal Dán Kính, Phim Cách Nhiệt TPHCM 2026"
+  description="Cập nhật bảng giá dán decal mờ văn phòng, cắt logo kính, dán phim cách nhiệt nhà kính giá rẻ tại TPHCM. Cam kết không phát sinh, khảo sát miễn phí."
 >
-  <section class="bg-slate-900 py-20 text-center text-white px-6">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Bảng Giá Dịch Vụ</h1>
-    <p class="max-w-2xl mx-auto text-slate-400">
-      Cam kết minh bạch, không phát sinh chi phí. Giá tận xưởng - Chất lượng kỹ thuật cao.
-    </p>
-  </section>
-
-  <section class="py-16 max-w-7xl mx-auto px-6">
-    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
-      {pricingData.map((section) => (
-        <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden flex flex-col">
-          <div class="bg-slate-50 p-6 border-b border-gray-200">
-            <h2 class="text-xl font-bold text-slate-800 uppercase tracking-wider text-center">{section.category}</h2>
-          </div>
-          <div class="p-6 flex-grow">
-            <table class="w-full text-left">
-              <thead>
-                <tr class="text-gray-400 text-xs uppercase border-b border-gray-100">
-                  <th class="pb-4 font-medium">Hạng mục</th>
-                  <th class="pb-4 font-medium text-right">Đơn giá</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-50">
-                {section.items.map((item) => (
-                  <tr>
-                    <td class="py-4 text-sm font-medium text-slate-700">{item.name}</td>
-                    <td class="py-4 text-sm text-right">
-                      <span class="font-bold text-slate-900">{item.price}</span>
-                      <span class="text-gray-400 text-xs block italic">/{item.unit}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <div class="mt-12 bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-xl">
-      <p class="text-yellow-800 text-sm italic">
-        * <strong>Lưu ý:</strong> Đơn giá thực tế có thể thay đổi tùy thuộc vào khối lượng công trình, độ khó thi công và thời điểm thị trường. Hãy gọi <strong>0862 208 108</strong> để có giá chính xác nhất.
+  <section class="relative py-20 bg-slate-900 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Báo Giá Thi Công Decal & Phim Cách Nhiệt</h1>
+      <p class="text-xl text-slate-400 max-w-3xl">
+        Cung cấp báo giá chi tiết cho dịch vụ dán kính văn phòng, căn hộ tại TP.HCM. 
+        Chúng tôi cam kết mang lại giải pháp tối ưu với mức chi phí hợp lý nhất.
       </p>
     </div>
   </section>
 
-  <section class="py-20 bg-slate-50 px-6">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Giải đáp thắc mắc về giá</h2>
-      <div class="space-y-6">
-        {faqs.map((faq) => (
-          <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h4 class="font-bold text-slate-900 mb-3 flex items-start gap-2">
-              <span class="bg-yellow-400 text-xs px-2 py-1 rounded mt-1">Hỏi</span> 
-              {faq.q}
-            </h4>
-            <div class="pl-10 text-gray-600 text-sm leading-relaxed">
-              <span class="font-bold text-slate-400">Trả lời:</span> {faq.a}
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      {pricingSections.map((section, index) => (
+        <div class={`flex flex-col lg:flex-row gap-12 mb-24 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+          <div class="flex-1 w-full">
+            <h2 class="text-3xl font-bold mb-4 text-slate-800">{section.title}</h2>
+            <p class="text-gray-600 mb-8">{section.description}</p>
+            
+            <div class="overflow-x-auto border border-gray-100 rounded-2xl shadow-sm">
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-50">
+                  <tr>
+                    <th class="p-4 font-bold text-slate-700">Hạng mục thi công</th>
+                    <th class="p-4 font-bold text-slate-700 text-right">Đơn giá (VNĐ)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {section.items.map((item) => (
+                    <tr class="border-t border-gray-50 hover:bg-gray-50 transition">
+                      <td class="p-4 text-gray-700">{item.name}</td>
+                      <td class="p-4 text-right">
+                        <span class="font-bold text-slate-900 text-lg">{item.price}</span>
+                        <span class="text-gray-400 text-sm italic"> /{item.unit}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-4 text-xs text-gray-400 italic font-light">
+                * Lưu ý: Đơn giá trên có tính chất tham khảo cho khối lượng >20m2. Khối lượng ít hơn hoặc vị trí khó thi công (trên cao, ban đêm) vui lòng liên hệ.
+            </p>
+          </div>
+          
+          <div class="flex-1 w-full">
+            <div class="relative group">
+                <div class="absolute -inset-2 bg-yellow-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition"></div>
+                <img 
+                    src={section.image} 
+                    alt={section.title} 
+                    class="relative rounded-2xl shadow-xl w-full h-[400px] object-cover"
+                />
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   </section>
 
-  <section class="py-16 text-center px-6">
-    <div class="max-w-4xl mx-auto bg-slate-900 text-white rounded-3xl p-10 md:p-16 shadow-2xl">
-      <h2 class="text-3xl font-bold mb-6">Cần báo giá chính xác cho mặt bằng của bạn?</h2>
-      <p class="text-slate-400 mb-10">Gửi kích thước hoặc ảnh chụp thực tế qua Zalo, chúng tôi báo giá ngay sau 2 phút.</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="tel:0862208108" class="bg-yellow-500 text-black px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg">Gọi ngay: 0862 208 108</a>
-        <a href="https://zalo.me/0862208108" class="bg-blue-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg">Chat Zalo báo giá</a>
-      </div>
+  <section class="py-20 bg-slate-50 px-6">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Yếu tố nào ảnh hưởng đến giá thi công decal?</h2>
+        <div class="prose prose-slate max-w-none text-gray-600 space-y-6">
+            <p>
+                Khi tìm kiếm đơn vị <strong>thi công decal dán kính</strong>, quý khách thường thấy có nhiều mức giá khác nhau. Tại <strong>DecalPro</strong>, chúng tôi luôn minh bạch các yếu tố ảnh hưởng trực tiếp đến ngân sách của bạn:
+            </p>
+            <ul class="list-disc pl-6 space-y-4">
+                <li><strong>Diện tích thi công:</strong> Khối lượng càng lớn, đơn giá trên mỗi mét vuông càng giảm sâu.</li>
+                <li><strong>Độ khó của thiết kế:</strong> Decal mờ dán trơn sẽ rẻ hơn so với decal cắt chữ, logo CNC hoặc kẻ chỉ thủ công đòi hỏi sự tỉ mỉ.</li>
+                <li><strong>Chất lượng vật liệu:</strong> Phim cách nhiệt Nano Ceramic chính hãng Hàn Quốc sẽ có giá cao hơn các dòng decal phản quang thông thường nhưng hiệu quả cản nhiệt vượt trội.</li>
+                <li><strong>Vị trí thi công:</strong> Các vị trí trên cao cần giàn giáo hoặc dán ngoài giờ hành chính sẽ phát sinh thêm phụ phí hỗ trợ thợ.</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white px-6">
+    <div class="max-w-7xl mx-auto border-2 border-dashed border-slate-200 rounded-3xl p-8 md:p-16">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-8">Cam kết dịch vụ tại DecalPro</h2>
+                <ul class="space-y-4">
+                    {checklistSEO.map(item => (
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <span class="text-gray-700 font-medium">{item}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div class="bg-slate-900 rounded-2xl p-8 text-white">
+                <h3 class="text-2xl font-bold mb-4">Nhận báo giá ngay qua Zalo</h3>
+                <p class="text-slate-400 mb-8 text-sm">Chụp ảnh mặt bằng kính và gửi kích thước sơ bộ, chúng tôi sẽ gửi báo giá trọn gói không phát sinh trong 5 phút.</p>
+                <a href="https://zalo.me/0862208108" class="block w-full text-center bg-yellow-500 text-black py-4 rounded-xl font-bold text-xl hover:bg-yellow-400 transition">
+                    Zalo: 0862 208 108
+                </a>
+            </div>
+        </div>
     </div>
   </section>
 </BaseLayout>
