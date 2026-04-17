@@ -5,16 +5,21 @@ export const districtMega = [
       { 
         name: "Quận 1", 
         slug: "quan-1",
-        seoContent: "Quận 1 là trung tâm hành chính, nơi tập trung nhiều cao ốc như Bitexco, Vietcombank Tower. Chúng tôi chuyên dán decal mờ văn phòng tại các tuyến đường Lê Lợi, Nguyễn Huệ...",
-        projects: ["Dán kính Ngân hàng VCB", "Decal mờ tòa nhà Sunwah"]
+        // Nội dung viết riêng hoàn toàn
+        seoIntro: "Quận 1 là trung tâm tài chính sầm uất nhất TP.HCM, nơi tập trung hàng ngàn văn phòng cao cấp tại các tòa nhà như Bitexco, Landmark, và Vietcombank Tower.",
+        seoDetail: "Tại Quận 1, DecalPro chuyên cung cấp giải pháp decal mờ kẻ chỉ chuyên nghiệp cho phòng họp, cắt dán chữ logo CNC sắc nét trên kính. Chúng tôi am hiểu quy định thi công khắt khe của các tòa nhà hạng A, đảm bảo thi công sạch sẽ, đúng tiến độ.",
+        popularRoads: "Lê Lợi, Nguyễn Huệ, Hàm Nghi, Đồng Khởi, Mạc Đĩnh Chi",
+        serviceType: "Decal Mờ Văn Phòng & Logo Công Ty"
       },
       { 
         name: "Quận 7", 
         slug: "quan-7",
-        seoContent: "Quận 7 nổi tiếng với KĐT Phú Mỹ Hưng. Nhu cầu chống nắng cho chung cư rất cao. Chúng tôi cung cấp phim cách nhiệt tại đường Nguyễn Văn Linh, Nguyễn Thị Thập...",
-        projects: ["Phim cách nhiệt Sunrise City", "Decal shop tại Crescent Mall"]
+        seoIntro: "Với đặc thù nhiều khu đô thị cao cấp như Phú Mỹ Hưng, Him Lam, Quận 7 có nhu cầu rất lớn về chống nắng nóng cho căn hộ chung cư và nhà phố biệt thự.",
+        seoDetail: "Chúng tôi mang đến giải pháp phim cách nhiệt Nano Ceramic chính hãng giúp giảm ngay 7-10 độ C cho căn hộ hướng Tây tại các dự án như Sunrise City, Scenic Valley. Ngoài ra, thợ DecalPro còn chuyên dán decal trang trí cho các shop tại Crescent Mall và SC VivoCity.",
+        popularRoads: "Nguyễn Văn Linh, Nguyễn Thị Thập, Huỳnh Tấn Phát, Lê Văn Lương",
+        serviceType: "Phim Cách Nhiệt Căn Hộ & Decal Shop"
       }
-      // Các quận khác bạn viết tương tự...
+      // Các quận khác bạn cứ thêm tương tự vào đây...
     ]
   }
 ];
