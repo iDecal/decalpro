@@ -144,39 +144,6 @@ const mainServices = [
   }
 ];
 
-<BaseLayout title="Trang Chủ - DecalPro">
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <div class="mb-12">
-        <h2 class="text-3xl font-black text-slate-900 uppercase">Dịch vụ <span class="text-yellow-500">Trọng Tâm</span></h2>
-        <div class="w-16 h-1 bg-yellow-500 mt-2"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {
-          mainServices.map((service) => (
-            <a href={service.link} class="group bg-slate-50 p-8 rounded-[2rem] border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300">
-              <div class="text-4xl mb-6">{service.icon}</div>
-              
-              <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-yellow-600">
-                {service.title}
-              </h3>
-              
-              <p class="text-slate-500 text-sm mb-6 h-12 overflow-hidden">
-                {service.desc}
-              </p>
-
-              <div class="pt-4 border-t border-slate-200">
-                <span class="text-xs text-slate-400 block mb-1">Chi phí thi công</span>
-                <span class="font-bold text-slate-900">{service.priceNote}</span>
-              </div>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
 
   <section class="py-20 bg-gray-50 px-6">
     <div class="max-w-7xl mx-auto">
