@@ -17,7 +17,7 @@ const contactFaqs = [
   }
 ];
 
-// 2. Schema LocalBusiness & FAQ (Giúp Google hiểu đây là trang liên hệ chính thức)
+// 2. Schema LocalBusiness & FAQ
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -28,8 +28,14 @@ const schema = {
       "telephone": "0862208108",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Địa chỉ của bạn",
         "addressLocality": "Ho Chi Minh City",
         "addressCountry": "VN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "10.762622", // Thay bằng tọa độ thực tế của bạn
+        "longitude": "106.660172"
       }
     },
     {
@@ -56,71 +62,64 @@ const schema = {
   <section class="bg-slate-900 py-16 text-center text-white px-6">
     <h1 class="text-4xl font-bold mb-4">Liên Hệ Đội Ngũ Kỹ Thuật</h1>
     <p class="max-w-2xl mx-auto text-slate-300">
-      Đừng ngần ngại liên hệ để nhận tư vấn mẫu decal phù hợp và báo giá tối ưu nhất cho không gian của bạn.
+      Khảo sát tận nơi - Tư vấn mẫu tại chỗ - Thi công nhanh chóng trong ngày.
     </p>
   </section>
 
-  <section class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-16">
-    <div>
-      <h2 class="text-2xl font-bold mb-8">Thông tin trực tiếp</h2>
-      
-      <div class="space-y-8">
-        <div class="flex items-start gap-4">
-          <div class="bg-yellow-100 p-3 rounded-lg text-yellow-700">📞</div>
-          <div>
-            <p class="font-bold text-lg">Hotline / Zalo (24/7)</p>
-            <a href="tel:0862208108" class="text-2xl font-extrabold text-yellow-600">0862 208 108</a>
-            <p class="text-gray-500 text-sm italic">Hỗ trợ tư vấn nhanh mọi lúc.</p>
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-16 mb-16">
+      <div>
+        <h2 class="text-2xl font-bold mb-8">Thông tin trực tiếp</h2>
+        <div class="space-y-8">
+          <div class="flex items-start gap-4">
+            <div class="bg-yellow-100 p-3 rounded-lg text-yellow-700 font-bold">📞</div>
+            <div>
+              <p class="font-bold text-lg">Hotline / Zalo (24/7)</p>
+              <a href="tel:0862208108" class="text-2xl font-extrabold text-yellow-600">0862 208 108</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="bg-yellow-100 p-3 rounded-lg text-yellow-700 font-bold">📍</div>
+            <div>
+              <p class="font-bold text-lg">Địa chỉ văn phòng</p>
+              <p class="text-gray-700 italic">Nhập địa chỉ thực tế của bạn vào đây để khách hàng tìm kiếm</p>
+            </div>
           </div>
         </div>
 
-        <div class="flex items-start gap-4">
-          <div class="bg-yellow-100 p-3 rounded-lg text-yellow-700">🕒</div>
-          <div>
-            <p class="font-bold text-lg">Thời gian làm việc</p>
-            <p class="text-gray-700">Thứ 2 - Chủ Nhật: 08:00 - 21:00</p>
-            <p class="text-gray-500 text-sm">(Hỗ trợ thi công ngoài giờ cho văn phòng/mall)</p>
+        <div class="mt-12">
+          <h3 class="text-xl font-bold mb-6">Giải đáp nhanh</h3>
+          <div class="space-y-4">
+            {contactFaqs.map(faq => (
+              <div class="border-l-4 border-yellow-500 pl-4 bg-gray-50 py-3">
+                <p class="font-bold text-slate-800 text-sm mb-1">{faq.q}</p>
+                <p class="text-gray-600 text-sm">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      <div class="mt-16">
-        <h3 class="text-xl font-bold mb-6">Giải đáp nhanh</h3>
-        <div class="space-y-6">
-          {contactFaqs.map(faq => (
-            <div class="border-l-4 border-yellow-500 pl-4">
-              <p class="font-bold text-slate-800 mb-1">{faq.q}</p>
-              <p class="text-gray-600 text-sm">{faq.a}</p>
-            </div>
-          ))}
-        </div>
+      <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+        <h2 class="text-2xl font-bold mb-6 text-center">Gửi yêu cầu báo giá</h2>
+        <form action="#" class="space-y-4">
+          <input type="text" placeholder="Họ tên của bạn *" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-yellow-400" required />
+          <input type="tel" placeholder="Số điện thoại liên lạc *" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-yellow-400" required />
+          <input type="text" placeholder="Khu vực cần thi công (Vd: Quận 2...)" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-yellow-400" />
+          <textarea rows="3" placeholder="Yêu cầu cụ thể (Vd: Dán kính mờ vách ngăn văn phòng...)" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
+          <button type="submit" class="w-full bg-slate-900 text-white py-4 rounded-lg font-bold hover:bg-black transition">GỬI YÊU CẦU NGAY</button>
+        </form>
       </div>
     </div>
 
-    <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-      <h2 class="text-2xl font-bold mb-6">Gửi yêu cầu báo giá</h2>
-      <form action="#" class="space-y-4">
-        <div>
-          <label class="block text-sm font-bold mb-1">Họ tên khách hàng *</label>
-          <input type="text" placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-yellow-400 outline-none" required />
-        </div>
-        <div>
-          <label class="block text-sm font-bold mb-1">Số điện thoại *</label>
-          <input type="tel" placeholder="09xx xxx xxx" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-yellow-400 outline-none" required />
-        </div>
-        <div>
-          <label class="block text-sm font-bold mb-1">Địa chỉ thi công (Quận/Huyện)</label>
-          <input type="text" placeholder="Quận 1, Quận 7..." class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-yellow-400 outline-none" />
-        </div>
-        <div>
-          <label class="block text-sm font-bold mb-1">Nội dung yêu cầu</label>
-          <textarea rows="4" placeholder="Ví dụ: Dán decal mờ văn phòng diện tích 20m2..." class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-yellow-400 outline-none"></textarea>
-        </div>
-        <button type="submit" class="w-full bg-slate-900 text-white py-4 rounded-lg font-bold text-lg hover:bg-black transition">
-          GỬI YÊU CẦU NGAY
-        </button>
-      </form>
+    <div class="w-full h-[450px] rounded-2xl overflow-hidden shadow-inner border border-gray-200">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.460232428343!2d106.6648773153341!3d10.776019362148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ2JzMzLjciTiAxMDbCsDM5JzU3LjUiRQ!5e0!3m2!1svi!2svn!4v1640000000000!5m2!1svi!2svn" 
+            class="w-full h-full border-0" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
     </div>
   </section>
-
 </BaseLayout>
