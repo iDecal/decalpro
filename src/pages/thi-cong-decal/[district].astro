@@ -1,33 +1,108 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { districtMega } from "../../lib/districtMega";
 
+// 1. Hàm tạo ra danh sách các trang quận huyện tự động
 export async function getStaticPaths() {
-  const khuVucEntries = await getCollection('khu-vuc');
-  return khuVucEntries.map(entry => ({
-    params: { district: entry.slug },
-    props: { entry },
+  const allDistricts = districtMega.flatMap(group => group.districts);
+  return allDistricts.map((d) => ({
+    params: { district: d.slug },
+    props: { districtName: d.name },
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
-const { title, districtName, description } = entry.data;
+const { districtName } = Astro.props;
+const { district } = Astro.params;
+
+// 2. Nội dung tối ưu từ khóa theo từng quận
+const seoTitle = `Thi Công Decal Dán Kính ${districtName} | Giá Rẻ, Thợ Đến Ngay 30P`;
+const seoDesc = `Dịch vụ dán decal mờ văn phòng, phim cách nhiệt căn hộ tại ${districtName} TP.HCM. Khảo sát tận nơi miễn phí, thi công chuyên nghiệp, bảo hành 2 năm.`;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={seoTitle} description={seoDesc}>
   
-  <section class="py-24 text-center bg-gray-50">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6">{title}</h1>
-    <p class="max-w-2xl mx-auto text-gray-600">
-      Giải pháp dán kính thẩm mỹ và chống nóng tại {districtName}.
-    </p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-6 py-16">
-    <div class="prose prose-lg max-w-none">
-      <Content />
+  <section class="bg-slate-900 py-20 px-6 text-white text-center">
+    <div class="max-w-4xl mx-auto">
+      <nav class="text-sm text-slate-400 mb-6">
+        <a href="/" class="hover:text-yellow-500">Trang chủ</a> / 
+        <span>Thi công tại TP.HCM</span>
+      </nav>
+      <h1 class="text-3xl md:text-5xl font-black mb-6 uppercase">
+        Dán Decal Kính & Phim Cách Nhiệt <br/>
+        <span class="text-yellow-500">Tại {districtName}</span>
+      </h1>
+      <p class="text-lg text-slate-300 mb-8">
+        Bạn đang tìm thợ dán decal tại <strong>{districtName}</strong>? DecalPro có đội ngũ kỹ thuật túc trực tại khu vực này, cam kết có mặt khảo sát chỉ sau 30 phút gọi.
+      </p>
+      <a href="tel:0862208108" class="inline-block bg-yellow-500 text-black px-10 py-4 rounded-full font-bold text-xl shadow-xl hover:bg-white transition">
+        Gọi Thợ Ngay: 0862.208.108
+      </a>
     </div>
   </section>
 
-  </BaseLayout>
+  <section class="py-16 bg-white px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      <div class="p-8 border border-slate-100 rounded-3xl shadow-sm text-center">
+        <div class="text-4xl mb-4">🚀</div>
+        <h3 class="font-bold text-xl mb-2">Phản ứng nhanh</h3>
+        <p class="text-slate-500 text-sm">Có mặt nhanh chóng tại các tuyến đường {districtName} để đo đạc và báo giá.</p>
+      </div>
+      <div class="p-8 border border-slate-100 rounded-3xl shadow-sm text-center">
+        <div class="text-4xl mb-4">💎</div>
+        <h3 class="font-bold text-xl mb-2">Giá tại kho</h3>
+        <p class="text-slate-500 text-sm">Miễn phí vận chuyển và phụ phí đi lại cho khách hàng tại khu vực {districtName}.</p>
+      </div>
+      <div class="p-8 border border-slate-100 rounded-3xl shadow-sm text-center">
+        <div class="text-4xl mb-4">🛠️</div>
+        <h3 class="font-bold text-xl mb-2">Bảo hành tận nơi</h3>
+        <p class="text-slate-500 text-sm">Mọi vấn đề bong tróc được xử lý ngay trong 24h sau khi tiếp nhận phản hồi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50 px-6">
+    <div class="max-w-4xl mx-auto prose prose-slate">
+      <h2 class="text-3xl font-bold text-slate-900 mb-6">Dịch vụ dán decal kính tại {districtName} bao gồm:</h2>
+      
+      <div class="space-y-8 text-slate-700 leading-relaxed">
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <h4 class="font-bold text-lg text-yellow-600">1. Dán decal mờ văn phòng tại {districtName}</h4>
+          <p>Chúng tôi chuyên nhận cắt chữ logo, kẻ chỉ trang trí vách kính phòng họp cho các công ty tại các tòa nhà cao ốc ở {districtName}. Tạo không gian làm việc chuyên nghiệp và riêng tư.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <h4 class="font-bold text-lg text-yellow-600">2. Dán phim cách nhiệt căn hộ, nhà phố</h4>
+          <p>Dịch vụ chống nắng nóng cho cửa kính chung cư, nhà phố tại {districtName}. Giảm ngay 5-7 độ C, ngăn tia cực tím UV bảo vệ sức khỏe gia đình bạn.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm">
+          <h4 class="font-bold text-lg text-yellow-600">3. Decal quảng cáo, trang trí cửa hàng</h4>
+          <p>In ấn và thi công decal lưới, decal sữa quảng cáo cho các shop, showroom, quán cafe tại {districtName} với giá thành rẻ nhất thị trường.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="py-16 bg-slate-50 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-slate-900 mb-6 text-center">Tại sao nên chọn DecalPro tại {districtName}?</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-yellow-500">
+          <p class="text-slate-700">
+            {district.includes('quan') ? 
+              `Với đặc thù nhiều tòa nhà văn phòng và chung cư cao cấp tại ${districtName}, chúng tôi cung cấp các mẫu decal mờ tiêu chuẩn quốc tế, giúp tăng sự sang trọng cho không gian làm việc.` : 
+              `Khách hàng tại khu vực ngoại thành ${districtName} thường lo ngại về phí vận chuyển. Tại DecalPro, chúng tôi hỗ trợ 100% phí đi lại cho thợ thi công tại khu vực này.`}
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-slate-900">
+          <p class="text-slate-700">
+             Chúng tôi đã thực hiện hơn 500+ công trình lớn nhỏ tại <strong>{districtName}</strong>, từ dán kính quán cafe mặt tiền đến các vách kính phòng họp công ty.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
