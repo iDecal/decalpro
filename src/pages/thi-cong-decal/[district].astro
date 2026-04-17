@@ -5,97 +5,30 @@ import { districtMega } from "../../lib/districtMega";
 export async function getStaticPaths() {
   const allDistricts = districtMega.flatMap(group => group.districts);
   
-  return allDistricts.map((d) => {
-    // Tối ưu nội dung riêng biệt cho từng khu vực để tránh SPAM
-    let customDesc = "";
-    let localStyle = "";
-
-    if (d.slug.includes('quan-1') || d.slug.includes('quan-3') || d.slug.includes('quan-5')) {
-      customDesc = `Khu vực trung tâm ${d.name} tập trung nhiều văn phòng cao cấp. DecalPro chuyên thi công decal mờ, cắt dán logo thương hiệu và kẻ chỉ trang trí vách kính phòng họp chuyên nghiệp.`;
-      localStyle = "Văn phòng & Showroom";
-    } else if (d.slug.includes('quan-7') || d.slug.includes('binh-thanh') || d.slug.includes('quan-2')) {
-      customDesc = `Tại khu vực ${d.name} với nhiều chung cư cao cấp và biệt thự, chúng tôi ưu tiên giải pháp phim cách nhiệt Nano Ceramic giúp chống nắng nóng, bảo vệ sức khỏe và nội thất căn hộ.`;
-      localStyle = "Căn hộ & Biệt thự";
-    } else {
-      customDesc = `Dịch vụ dán decal kính tại nhà khu vực ${d.name}. Chúng tôi nhận thi công mọi diện tích lớn nhỏ, từ cửa sổ nhà phố đến các quán cafe, shop thời trang với mức giá tại kho.`;
-      localStyle = "Nhà phố & Cửa hàng";
-    }
-
-    return {
-      params: { district: d.slug },
-      props: { 
-        districtName: d.name,
-        uniqueDesc: customDesc,
-        style: localStyle
-      },
-    };
-  });
+  return allDistricts.map((d) => ({
+    params: { district: d.slug },
+    props: { 
+      info: d // Truyền toàn bộ đối tượng d (chứa seoContent, projects...) vào props
+    },
+  }));
 }
 
-const { districtName, uniqueDesc, style } = Astro.props;
+const { info } = Astro.props;
 ---
 
-<BaseLayout 
-  title={`Thi Công Decal Dán Kính ${districtName} | Thợ Đến Ngay 30P`} 
-  description={`Dịch vụ dán decal mờ, phim cách nhiệt căn hộ tại ${districtName} TP.HCM. ${uniqueDesc} Khảo sát miễn phí.`}
->
-  <section class="bg-slate-900 py-16 px-6 text-white text-center">
-    <div class="max-w-4xl mx-auto">
-      <span class="text-yellow-500 font-bold uppercase tracking-widest text-sm">Dịch vụ tại {districtName}</span>
-      <h1 class="text-3xl md:text-5xl font-black mt-4 mb-6 uppercase leading-tight">
-        Dán Decal Kính & Cách Nhiệt <br/>
-        <span class="text-yellow-500">Khu Vực {districtName}</span>
-      </h1>
-      <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto italic">
-        "{uniqueDesc}"
-      </p>
-      <a href="tel:0862208108" class="inline-block bg-yellow-500 text-black px-10 py-4 rounded-xl font-bold text-xl shadow-xl hover:bg-white transition">
-        📞 Gọi Thợ {districtName}: 0862.208.108
-      </a>
+<BaseLayout title={`Thi công decal tại ${info.name}`}>
+  <section class="py-20 px-6">
+    <h1>Dịch vụ tại {info.name}</h1>
+    
+    <div class="prose max-w-4xl mx-auto">
+      <p>{info.seoContent}</p> 
     </div>
-  </section>
 
-  <section class="py-16 bg-white px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-bold text-slate-900 mb-6">Tại sao nên gọi thợ DecalPro tại {districtName}?</h2>
-          <ul class="space-y-4 text-slate-600">
-            <li class="flex items-start gap-3">
-              <span class="text-yellow-500 font-bold">✓</span> 
-              <span><strong>Tốc độ:</strong> Đội thợ túc trực tại các tuyến đường chính {districtName}, có mặt sau 30 phút.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-yellow-500 font-bold">✓</span> 
-              <span><strong>Chuyên môn:</strong> Am hiểu kiến trúc đặc thù khu vực ({style}), tư vấn đúng loại vật liệu cần thiết.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-yellow-500 font-bold">✓</span> 
-              <span><strong>Giá thành:</strong> Không tính phí đi lại/vận chuyển cho khách hàng khu vực nội ngoại thành TP.HCM.</span>
-            </li>
-          </ul>
-        </div>
-        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
-          <h3 class="font-bold text-xl mb-4">Cam kết chất lượng:</h3>
-          <p class="text-sm text-slate-500 mb-6 leading-relaxed">
-            Mọi công trình tại <strong>{districtName}</strong> đều được chúng tôi bảo hành từ 2-5 năm. Sử dụng vật liệu decal mờ Canon, phim cách nhiệt Hàn Quốc chính hãng.
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="flex-1 h-[2px] bg-yellow-500"></div>
-            <span class="font-black italic text-slate-800">DecalPro 2026</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-12 bg-yellow-50 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-2xl font-bold mb-4">Bạn ở {districtName} và muốn xem mẫu thực tế?</h2>
-      <p class="text-slate-600 mb-8">Kết bạn Zalo để chúng tôi gửi hình ảnh dự án đã làm gần chỗ bạn nhất!</p>
-      <a href="https://zalo.me/0862208108" class="inline-flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition shadow-lg">
-        Chat Zalo Ngay: 0862.208.108
-      </a>
+    <div class="mt-10">
+      <h3 class="font-bold">Công trình đã làm tại {info.name}:</h3>
+      <ul>
+        {info.projects?.map(p => <li>{p}</li>)}
+      </ul>
     </div>
   </section>
 </BaseLayout>
