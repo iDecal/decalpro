@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Dữ liệu các dòng phim cách nhiệt
+const filmTypes = [
+  {
+    title: "Phim cách nhiệt Nano Ceramic",
+    desc: "Công nghệ gốm nano siêu bền, không cản sóng điện thoại, cách nhiệt tới 90%.",
+    features: ["Cản 99% tia UV", "Độ bền > 10 năm", "Không bay màu"]
+  },
+  {
+    title: "Phim phản quang (Sputtered)",
+    desc: "Lớp phủ kim loại siêu mỏng giúp phản xạ nhiệt tối đa, phù hợp hướng Tây.",
+    features: ["Giá thành hợp lý", "Chống nhìn trộm", "Giảm chói tốt"]
+  },
+  {
+    title: "Phim an toàn (Safety Film)",
+    desc: "Độ dày cao giúp giữ mảnh vỡ khi kính nổ, bảo vệ tuyệt đối cho tòa nhà.",
+    features: ["Chống va đập", "Độ dày 4mil - 8mil", "Trong suốt"]
+  }
+];
+
+// Dữ liệu FAQ cho Phim cách nhiệt
+const faqs = [
+  {
+    q: "Dán phim cách nhiệt có làm tối phòng không?",
+    a: "Không hẳn. Chúng tôi có nhiều độ xuyên sáng từ 5% đến 70%. Bạn có thể chọn loại phim trong suốt vẫn cách nhiệt tốt mà không thay đổi màu kính."
+  },
+  {
+    q: "Phim cách nhiệt bảo hành bao lâu?",
+    a: "Các dòng phim chính hãng tại DecalPro được bảo hành từ 5 đến 10 năm cho các hiện tượng bong tróc, rạn nứt hoặc bay màu."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+};
+---
+
+<BaseLayout 
+  title="Thi Công Phim Cách Nhiệt Nhà Kính TP.HCM - Giảm Nhiệt 90%"
+  description="Dịch vụ dán phim cách nhiệt căn hộ, chống nắng tòa nhà kính chuyên nghiệp. Ngăn 99% tia UV, bảo vệ nội thất, bảo hành 10 năm."
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+
+  <section class="relative py-24 bg-gradient-to-br from-slate-900 to-blue-900 overflow-hidden text-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="bg-blue-500 text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block uppercase">Giải pháp chống nóng 4.0</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+          Dán Phim Cách Nhiệt <br/> <span class="text-yellow-400">Bảo Vệ Sức Khỏe</span> & Nội Thất
+        </h1>
+        <p class="text-lg text-slate-300 mb-8">
+          Giảm ngay 7-10°C cho không gian sống. Ngăn chặn triệt để tia UV gây hại và tiết kiệm đến 30% hóa đơn tiền điện hàng tháng.
+        </p>
+        <div class="flex gap-4">
+          <a href="tel:0862208108" class="bg-yellow-500 text-black px-8 py-4 rounded-full font-bold hover:bg-yellow-400 transition shadow-lg">Báo giá: 0862 208 108</a>
+        </div>
+      </div>
+      <div class="relative">
+        <img src="/images/thi-cong-phim-cach-nhiet.webp" alt="Thi công phim cách nhiệt căn hộ" class="rounded-3xl shadow-2xl border-4 border-white/10" />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="text-center">
+          <div class="text-5xl mb-4">☀️</div>
+          <h3 class="text-xl font-bold mb-2">Cản 99% Tia UV</h3>
+          <p class="text-gray-600 text-sm">Bảo vệ làn da khỏi nám, sạm và ngăn nội thất gỗ, da bị bạc màu, bong tróc.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">🌡️</div>
+          <h3 class="text-xl font-bold mb-2">Giảm Nhiệt 80-90%</h3>
+          <p class="text-gray-600 text-sm">Loại bỏ sức nóng mặt trời, giúp không gian luôn mát mẻ kể cả trong những ngày nắng gắt.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">💰</div>
+          <h3 class="text-xl font-bold mb-2">Tiết Kiệm Điện</h3>
+          <p class="text-gray-600 text-sm">Giảm tải cho hệ thống điều hòa, giúp máy lạnh hoạt động bền bỉ và tiết kiệm chi phí điện.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-16">Các dòng phim cách nhiệt tiêu biểu</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {filmTypes.map(film => (
+          <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
+            <h3 class="text-xl font-bold mb-4 text-blue-900">{film.title}</h3>
+            <p class="text-gray-600 text-sm mb-6 flex-grow">{film.desc}</p>
+            <ul class="space-y-2">
+              {film.features.map(f => (
+                <li class="flex items-center text-sm font-medium text-slate-700">
+                  <span class="text-green-500 mr-2">✓</span> {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Hỏi đáp về phim cách nhiệt</h2>
+      <div class="space-y-6">
+        {faqs.map(item => (
+          <div class="bg-gray-50 p-6 rounded-xl">
+            <h4 class="font-bold text-slate-900 mb-2">{item.q}</h4>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-blue-600 py-16 text-center px-6 text-white">
+    <h2 class="text-3xl font-bold mb-4">Bạn đang bị nắng nóng làm phiền?</h2>
+    <p class="mb-8 opacity-90">Kỹ thuật viên sẽ mang máy đo thông số nhiệt đến tận nhà kiểm tra miễn phí!</p>
+    <a href="tel:0862208108" class="bg-yellow-400 text-black px-10 py-4 rounded-full font-bold text-xl inline-block hover:scale-110 transition">
+        Đặt lịch khảo sát ngay
+    </a>
+  </section>
+</BaseLayout>
