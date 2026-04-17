@@ -1,66 +1,78 @@
 ---
-const { info } = Astro.props;
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { districtMega } from "../../lib/districtMega";
 
-// Nếu quận đó chưa được soạn nội dung riêng trong districtMega.ts, 
-// ta sẽ dùng nội dung mặc định nhưng vẫn có tên quận để Google không phạt.
-const defaultIntro = `Dịch vụ thi công decal dán kính chuyên nghiệp tại ${info.name}. Chúng tôi cam kết chất lượng, khảo sát tận nơi và thi công nhanh chóng trong ngày.`;
-const defaultDetail = `Tại khu vực ${info.name}, DecalPro cung cấp đầy đủ các giải pháp từ dán kính mờ văn phòng, decal trang trí shop đến phim cách nhiệt chống nóng cho nhà phố và căn hộ. Đội ngũ thợ tay nghề cao, làm việc tận tâm.`;
-const defaultRoads = `các tuyến đường trọng điểm tại ${info.name}`;
-const defaultType = `Decal Dán Kính & Phim Cách Nhiệt`;
+export async function getStaticPaths() {
+  const allDistricts = districtMega.flatMap(group => group.districts);
+  return allDistricts.map((d) => ({
+    params: { district: d.slug },
+    props: { districtName: d.name },
+  }));
+}
 
-// Ưu tiên lấy dữ liệu riêng, nếu không có thì lấy mặc định
-const displayIntro = info.seoIntro || defaultIntro;
-const displayDetail = info.seoDetail || defaultDetail;
-const displayRoads = info.popularRoads || defaultRoads;
-const displayType = info.serviceType || defaultType;
+const { districtName } = Astro.props;
+const { district } = Astro.params;
+
+// LOGIC NỘI DUNG TỰ ĐỘNG THEO QUẬN
+const isHuyen = districtName.includes("Huyện");
+const isCenter = ["quan-1", "quan-3", "quan-5", "quan-10"].includes(district);
+
+const serviceHighlight = isCenter 
+  ? "Decal mờ văn phòng, cắt chữ logo công ty và trang trí vách kính phòng họp."
+  : "Dán phim cách nhiệt chống nóng căn hộ, decal dán kính nhà phố và shop thời trang.";
+
+const commitment = isHuyen
+  ? `Hỗ trợ thi công tận nơi tại khu vực ${districtName}, không ngại đường xa, giá thành không đổi.`
+  : `Đội thợ túc trực tại ${districtName}, cam kết có mặt khảo sát và đo đạc chỉ sau 30 phút gọi.`;
 ---
 
 <BaseLayout 
-  title={`Thi Công Decal Dán Kính ${info.name} | Thợ Tay Nghề Cao`}
-  description={info.seoIntro}
+  title={`Thi Công Decal Dán Kính ${districtName} | Giá Rẻ & Chuyên Nghiệp`}
+  description={`Dịch vụ thi công decal mờ, phim cách nhiệt tại ${districtName} TP.HCM. Thợ tay nghề cao, thi công nhanh, báo giá tại chỗ. Gọi ngay 0862.208.108`}
 >
-  <section class="bg-slate-900 py-20 px-6 text-white text-center">
+  <section class="bg-slate-900 py-16 px-6 text-center text-white">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-6xl font-black mb-6 uppercase">
-        Dán Decal Tại <span class="text-yellow-500">{info.name}</span>
+      <h1 class="text-3xl md:text-5xl font-black mb-6 uppercase">
+        Thợ Dán Decal Kính <br class="hidden md:block"/> 
+        <span class="text-yellow-500">Tại {districtName}</span>
       </h1>
-      <p class="text-xl text-slate-300 leading-relaxed">
-        {info.seoIntro}
+      <p class="text-lg text-slate-300">
+        Chuyên nghiệp - Uy tín - Giá tại kho. Phục vụ 24/7 trên khắp các tuyến đường thuộc <strong>{districtName}</strong>.
       </p>
     </div>
   </section>
 
   <section class="py-16 bg-white px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="prose prose-lg prose-slate max-w-none">
-        <h2 class="text-3xl font-bold text-slate-900 mb-6">Dịch vụ trọng tâm tại {info.name}</h2>
-        <p class="text-slate-600 mb-8 text-lg">
-          {info.seoDetail}
-        </p>
-
-        <div class="bg-yellow-50 p-8 rounded-3xl border border-yellow-100 mb-10">
-          <h3 class="text-xl font-bold mb-4 text-slate-900">Phạm vi phục vụ tại {info.name}:</h3>
-          <p class="text-slate-700">
-            Đội ngũ thợ của <strong>DecalPro</strong> thường xuyên túc trực và thi công tại các tuyến đường chính như: 
-            <span class="font-medium text-slate-900">{info.popularRoads}</span> và các khu vực lân cận.
-          </p>
-          <p class="mt-4 text-sm text-yellow-700 font-bold">✓ Cam kết có mặt khảo sát sau 30 phút gọi tại {info.name}</p>
+    <div class="max-w-4xl mx-auto prose prose-slate">
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">Ưu thế dịch vụ DecalPro tại {districtName}</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 not-prose mb-12">
+        <div class="p-6 bg-slate-50 rounded-2xl border-l-4 border-yellow-500">
+          <h3 class="font-bold text-lg mb-2 text-slate-900">Dịch vụ trọng tâm</h3>
+          <p class="text-slate-600 text-sm">{serviceHighlight}</p>
         </div>
+        <div class="p-6 bg-slate-50 rounded-2xl border-l-4 border-slate-900">
+          <h3 class="font-bold text-lg mb-2 text-slate-900">Thời gian đáp ứng</h3>
+          <p class="text-slate-600 text-sm">{commitment}</p>
+        </div>
+      </div>
 
-        <h3 class="text-2xl font-bold mb-4 italic">Ưu thế của chúng tôi:</h3>
-        <ul class="list-disc pl-6 space-y-2 text-slate-600">
-          <li>Chuyên dòng dịch vụ: <strong>{info.serviceType}</strong></li>
-          <li>Đo đạc mẫu tận nơi miễn phí tại {info.name}.</li>
-          <li>Hỗ trợ thi công cả ngoài giờ hành chính cho các văn phòng.</li>
-        </ul>
+      <h3 class="text-xl font-bold">Quy trình làm việc của chúng tôi:</h3>
+      <ol class="space-y-3 mt-4">
+        <li><strong>Bước 1:</strong> Tiếp nhận nhu cầu khách hàng tại {districtName} qua Hotline/Zalo.</li>
+        <li><strong>Bước 2:</strong> Kỹ thuật viên đến tận nơi khảo sát, đo đạc và mang theo mẫu decal thực tế.</li>
+        <li><strong>Bước 3:</strong> Báo giá trực tiếp dựa trên diện tích và loại vật liệu lựa chọn.</li>
+        <li><strong>Bước 4:</strong> Thi công nhanh chóng, sạch sẽ và bàn giao nghiệm thu.</li>
+      </ol>
+
+      <div class="mt-12 p-8 bg-yellow-50 rounded-3xl text-center border border-yellow-100">
+        <h3 class="text-xl font-bold text-slate-900 mb-4">Bạn cần tư vấn nhanh tại {districtName}?</h3>
+        <p class="text-slate-600 mb-6">Gửi hình ảnh vách kính qua Zalo để nhận báo giá sơ bộ ngay lập tức!</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="tel:0862208108" class="bg-black text-white px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition">Gọi 0862.208.108</a>
+          <a href="https://zalo.me/0862208108" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition">Nhắn Zalo</a>
+        </div>
       </div>
     </div>
-  </section>
-
-  <section class="bg-yellow-500 py-16 text-center">
-    <h2 class="text-3xl font-black mb-6">BẠN CẦN THỢ TẠI {info.name.toUpperCase()}?</h2>
-    <a href="tel:0862208108" class="bg-black text-white px-10 py-5 rounded-full font-bold text-2xl hover:scale-110 transition shadow-2xl inline-block">
-      GỌI NGAY: 0862.208.108
-    </a>
   </section>
 </BaseLayout>
