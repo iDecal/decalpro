@@ -7,28 +7,59 @@ export async function getStaticPaths() {
   
   return allDistricts.map((d) => ({
     params: { district: d.slug },
-    props: { 
-      info: d // Truyền toàn bộ đối tượng d (chứa seoContent, projects...) vào props
-    },
+    props: { info: d }, // Truyền cục dữ liệu riêng của quận vào props
   }));
 }
 
 const { info } = Astro.props;
 ---
 
-<BaseLayout title={`Thi công decal tại ${info.name}`}>
-  <section class="py-20 px-6">
-    <h1>Dịch vụ tại {info.name}</h1>
-    
-    <div class="prose max-w-4xl mx-auto">
-      <p>{info.seoContent}</p> 
+<BaseLayout 
+  title={`Thi Công Decal Dán Kính ${info.name} | Thợ Tay Nghề Cao`}
+  description={info.seoIntro}
+>
+  <section class="bg-slate-900 py-20 px-6 text-white text-center">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-black mb-6 uppercase">
+        Dán Decal Tại <span class="text-yellow-500">{info.name}</span>
+      </h1>
+      <p class="text-xl text-slate-300 leading-relaxed">
+        {info.seoIntro}
+      </p>
     </div>
+  </section>
 
-    <div class="mt-10">
-      <h3 class="font-bold">Công trình đã làm tại {info.name}:</h3>
-      <ul>
-        {info.projects?.map(p => <li>{p}</li>)}
-      </ul>
+  <section class="py-16 bg-white px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-lg prose-slate max-w-none">
+        <h2 class="text-3xl font-bold text-slate-900 mb-6">Dịch vụ trọng tâm tại {info.name}</h2>
+        <p class="text-slate-600 mb-8 text-lg">
+          {info.seoDetail}
+        </p>
+
+        <div class="bg-yellow-50 p-8 rounded-3xl border border-yellow-100 mb-10">
+          <h3 class="text-xl font-bold mb-4 text-slate-900">Phạm vi phục vụ tại {info.name}:</h3>
+          <p class="text-slate-700">
+            Đội ngũ thợ của <strong>DecalPro</strong> thường xuyên túc trực và thi công tại các tuyến đường chính như: 
+            <span class="font-medium text-slate-900">{info.popularRoads}</span> và các khu vực lân cận.
+          </p>
+          <p class="mt-4 text-sm text-yellow-700 font-bold">✓ Cam kết có mặt khảo sát sau 30 phút gọi tại {info.name}</p>
+        </div>
+
+        <h3 class="text-2xl font-bold mb-4 italic">Ưu thế của chúng tôi:</h3>
+        <ul class="list-disc pl-6 space-y-2 text-slate-600">
+          <li>Chuyên dòng dịch vụ: <strong>{info.serviceType}</strong></li>
+          <li>Đo đạc mẫu tận nơi miễn phí tại {info.name}.</li>
+          <li>Hỗ trợ thi công cả ngoài giờ hành chính cho các văn phòng.</li>
+        </ul>
+      </div>
     </div>
+  </section>
+
+  <section class="bg-yellow-500 py-16 text-center">
+    <h2 class="text-3xl font-black mb-6">BẠN CẦN THỢ TẠI {info.name.toUpperCase()}?</h2>
+    <a href="tel:0862208108" class="bg-black text-white px-10 py-5 rounded-full font-bold text-2xl hover:scale-110 transition shadow-2xl inline-block">
+      GỌI NGAY: 0862.208.108
+    </a>
   </section>
 </BaseLayout>
