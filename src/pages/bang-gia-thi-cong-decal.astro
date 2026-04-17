@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// Dữ liệu bảng giá chi tiết
+// Dữ liệu bảng giá chi tiết - Đã thêm đường dẫn link
 const pricingSections = [
   {
     title: "Báo Giá Decal Mờ Văn Phòng",
+    link: "/decal-dan-kinh-van-phong", // Link trỏ về trang dịch vụ
     description: "Giải pháp hàng đầu cho vách kính phòng họp, phòng làm việc nhân viên.",
     items: [
       { name: "Decal mờ dán trơn (Standard)", price: "40.000 - 60.000", unit: "m2" },
@@ -12,10 +13,11 @@ const pricingSections = [
       { name: "Cắt chữ/Logo decal mờ CNC", price: "120.000 - 350.000", unit: "bộ" },
       { name: "In UV màu trên nền decal mờ", price: "180.000 - 280.000", unit: "m2" }
     ],
-    image: "/images/projects/decal-mo-van-phong.jpg" // Đảm bảo có ảnh này
+    image: "/images/projects/decal-mo-van-phong.jpg" 
   },
   {
     title: "Báo Giá Phim Cách Nhiệt - Chống Nắng",
+    link: "/thi-cong-phim-cach-nhiet", // Link trỏ về trang dịch vụ
     description: "Ngăn tia UV, giảm nhiệt độ phòng và tiết kiệm điện năng cho điều hòa.",
     items: [
       { name: "Decal phản quang (Silver)", price: "60.000 - 90.000", unit: "m2" },
@@ -27,6 +29,7 @@ const pricingSections = [
   },
   {
     title: "Dịch Vụ Wrap & Decal Quảng Cáo",
+    link: "/wrap-noi-that", // Link trỏ về trang dịch vụ
     description: "Tân trang nội thất và quảng bá thương hiệu mặt tiền Showroom.",
     items: [
       { name: "Wrap film nội thất (Vân gỗ, vân đá)", price: "250.000 - 600.000", unit: "m2" },
@@ -66,9 +69,9 @@ const checklistSEO = [
         <div class={`flex flex-col lg:flex-row gap-12 mb-24 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
           <div class="flex-1 w-full">
             <h2 class="text-3xl font-bold mb-4 text-slate-800">{section.title}</h2>
-            <p class="text-gray-600 mb-8">{section.description}</p>
+            <p class="text-gray-600 mb-6">{section.description}</p>
             
-            <div class="overflow-x-auto border border-gray-100 rounded-2xl shadow-sm">
+            <div class="overflow-x-auto border border-gray-100 rounded-2xl shadow-sm mb-6">
               <table class="w-full text-left border-collapse">
                 <thead class="bg-slate-50">
                   <tr>
@@ -89,9 +92,17 @@ const checklistSEO = [
                 </tbody>
               </table>
             </div>
-            <p class="mt-4 text-xs text-gray-400 italic font-light">
-                * Lưu ý: Đơn giá trên có tính chất tham khảo cho khối lượng >20m2. Khối lượng ít hơn hoặc vị trí khó thi công (trên cao, ban đêm) vui lòng liên hệ.
-            </p>
+
+            <div class="flex flex-wrap gap-4 items-center">
+                <a href={section.link} class="inline-flex items-center gap-2 text-slate-900 font-bold hover:text-yellow-600 transition group">
+                    Xem chi tiết dịch vụ 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+                <span class="text-gray-300">|</span>
+                <p class="text-xs text-gray-400 italic">Khối lượng lớn có chiết khấu thêm</p>
+            </div>
           </div>
           
           <div class="flex-1 w-full">
@@ -141,88 +152,61 @@ const checklistSEO = [
                 </ul>
             </div>
             <div class="bg-slate-900 rounded-2xl p-8 text-white">
-                <h3 class="text-2xl font-bold mb-4">Nhận báo giá ngay qua Zalo</h3>
+                <h3 class="text-2xl font-bold mb-4 text-yellow-500">Nhận báo giá ngay qua Zalo</h3>
                 <p class="text-slate-400 mb-8 text-sm">Chụp ảnh mặt bằng kính và gửi kích thước sơ bộ, chúng tôi sẽ gửi báo giá trọn gói không phát sinh trong 5 phút.</p>
-                <a href="https://zalo.me/0862208108" class="block w-full text-center bg-yellow-500 text-black py-4 rounded-xl font-bold text-xl hover:bg-yellow-400 transition">
+                <a href="https://zalo.me/0862208108" class="block w-full text-center bg-yellow-500 text-black py-4 rounded-xl font-bold text-xl hover:bg-yellow-400 transition transform hover:-translate-y-1 shadow-lg">
                     Zalo: 0862 208 108
                 </a>
             </div>
         </div>
     </div>
   </section>
-<section class="py-24 bg-slate-50 px-6">
+
+  <section class="py-24 bg-slate-50 px-6">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Giải đáp thắc mắc về báo giá</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 text-uppercase">Giải đáp thắc mắc về báo giá</h2>
         <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
       </div>
 
       <div class="space-y-4">
-        <details class="group bg-white rounded-2xl border border-slate-200 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer" open>
-          <summary class="flex items-center justify-between gap-1.5 text-slate-900">
+        <details class="group bg-white rounded-2xl border border-slate-200 p-6 cursor-pointer" open>
+          <summary class="flex items-center justify-between gap-1.5 text-slate-900 list-none">
             <h3 class="text-lg font-bold">Làm sao để tôi nhận được báo giá chính xác nhất?</h3>
-            <span class="relative size-5 shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </span>
+            <span class="text-yellow-500 font-bold text-2xl group-open:rotate-45 transition-transform">+</span>
           </summary>
           <p class="mt-4 leading-relaxed text-slate-600">
             Để có báo giá chính xác 100%, bạn chỉ cần cung cấp <strong>chiều rộng x chiều cao</strong> của các tấm kính hoặc gửi ảnh chụp mặt bằng qua Zalo. Đội ngũ DecalPro sẽ tính toán định mức vật tư và gửi báo giá trọn gói bao gồm cả công lắp đặt cho bạn sau 5 phút.
           </p>
         </details>
 
-        <details class="group bg-white rounded-2xl border border-slate-200 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between gap-1.5 text-slate-900">
+        <details class="group bg-white rounded-2xl border border-slate-200 p-6 cursor-pointer">
+          <summary class="flex items-center justify-between gap-1.5 text-slate-900 list-none">
             <h3 class="text-lg font-bold">Số lượng ít (dưới 5m2) bên mình có nhận thi công không?</h3>
-            <span class="relative size-5 shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </span>
+            <span class="text-yellow-500 font-bold text-2xl group-open:rotate-45 transition-transform">+</span>
           </summary>
           <p class="mt-4 leading-relaxed text-slate-600">
-            Có, DecalPro nhận thi công mọi khối lượng. Tuy nhiên, với diện tích quá nhỏ (dưới 5m2 hoặc lẻ tẻ vài cửa sổ), chúng tôi sẽ áp dụng <strong>mức phí thi công tối thiểu (khoảng 300.000đ - 500.000đ/lần thợ đi)</strong> để đảm bảo chi phí di chuyển và vận hành.
+            Có, DecalPro nhận thi công mọi khối lượng. Tuy nhiên, với diện tích quá nhỏ (dưới 5m2), chúng tôi sẽ áp dụng <strong>mức phí thi công tối thiểu</strong> để đảm bảo chi phí di chuyển và vận hành của thợ.
           </p>
         </details>
 
-        <details class="group bg-white rounded-2xl border border-slate-200 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between gap-1.5 text-slate-900">
+        <details class="group bg-white rounded-2xl border border-slate-200 p-6 cursor-pointer">
+          <summary class="flex items-center justify-between gap-1.5 text-slate-900 list-none">
             <h3 class="text-lg font-bold">Báo giá đã bao gồm việc bóc bỏ decal cũ chưa?</h3>
-            <span class="relative size-5 shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </span>
+            <span class="text-yellow-500 font-bold text-2xl group-open:rotate-45 transition-transform">+</span>
           </summary>
           <p class="mt-4 leading-relaxed text-slate-600">
-            Thông thường, báo giá dán mới <strong>chưa bao gồm phí lột bỏ decal cũ</strong>. Nếu kính hiện tại đang dán decal hoặc film cũ đã chết keo, chúng tôi sẽ thu thêm phụ phí vệ sinh (từ 20.000đ - 35.000đ/m2) tùy vào độ khó khi tẩy keo.
+            Thông thường, báo giá dán mới <strong>chưa bao gồm phí lột bỏ decal cũ</strong>. Nếu kính hiện tại đang dán decal cũ đã chết keo, chúng tôi sẽ thu thêm phụ phí vệ sinh tùy vào độ khó khi tẩy keo.
           </p>
         </details>
 
-        <details class="group bg-white rounded-2xl border border-slate-200 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between gap-1.5 text-slate-900">
+        <details class="group bg-white rounded-2xl border border-slate-200 p-6 cursor-pointer">
+          <summary class="flex items-center justify-between gap-1.5 text-slate-900 list-none">
             <h3 class="text-lg font-bold">Thời gian thi công thường mất bao lâu?</h3>
-            <span class="relative size-5 shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 size-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </span>
+            <span class="text-yellow-500 font-bold text-2xl group-open:rotate-45 transition-transform">+</span>
           </summary>
           <p class="mt-4 leading-relaxed text-slate-600">
-            Với các văn phòng hoặc căn hộ thông thường (dưới 50m2), DecalPro thường hoàn thành thi công <strong>ngay trong ngày</strong>. Đối với các dự án lớn hơn hoặc yêu cầu cắt logo CNC phức tạp, thời gian có thể kéo dài 1-2 ngày tùy tiến độ.
+            Với các văn phòng hoặc căn hộ thông thường (dưới 50m2), DecalPro thường hoàn thành thi công <strong>ngay trong ngày</strong>.
           </p>
         </details>
       </div>
